@@ -20,7 +20,8 @@ Shopping Cart: Dynamic cart counter stored in LocalStorage.
 Auto-Prompt Security: A timer that prompts unauthenticated users to login after 1 minute of inactivity.
 Notification System: Custom toast notifications for user feedback (Success/Error).
 Mobile Navigation: Fully responsive hamburger menu for smaller screens.
-🛠️ Technologies Used
+
+# 🛠️ Technologies Used
 HTML5: Semantic structure.
 CSS3: Custom styling, Flexbox, CSS Grid, Animations, and Media Queries.
 JavaScript (ES6+): DOM manipulation, Event Listeners, LocalStorage API.
