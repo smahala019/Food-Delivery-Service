@@ -8,18 +8,30 @@ Front-End Static Web Application
 
 This project focuses heavily on UI/UX design, responsive layout, and client-side interactivity without requiring a backend server.
 
+
 # ✨ Features
 Responsive Hero Section: Immersive background with location-based search functionality.
+
 Food Categories: Interactive grid of food types (Pizza, Burger, Sushi, etc.) that redirects to specific listing pages.
+
 Featured Restaurants: Card-based layout displaying restaurant ratings, cuisine type, and delivery times.
+
 Authentication Simulation:
+
 User Login/Signup interface toggling.
+
 User profile display upon successful login.
+
 Logout functionality with state management.
+
 Shopping Cart: Dynamic cart counter stored in LocalStorage.
+
 Auto-Prompt Security: A timer that prompts unauthenticated users to login after 1 minute of inactivity.
+
 Notification System: Custom toast notifications for user feedback (Success/Error).
+
 Mobile Navigation: Fully responsive hamburger menu for smaller screens.
+
 
 # 🛠️ Technologies Used
 HTML5: Semantic structure.
@@ -36,29 +48,52 @@ Picsum Photos (Placeholder Images)
 
 # 📂 Project Structure
 Since the provided code is the main index.html, the full project structure would likely look like this:
+
 Food-Delivery-Service/
+
 │
 ├── index.html
+
 ├── about.html
+
 ├── blog.html
+
 ├── careers.html
+
 ├── cart.html
+
 ├── checkout.html
+
 ├── contact.html
+
 ├── faqs.html
+
 ├── forgot-password.html
+
 ├── gift-cards.html
+
 ├── help.html
+
 ├── login.html
+
 ├── order-confirmation.html
+
 ├── order-tracking.html
+
 ├── payment-success.html
+
 ├── press.html
+
 ├── privacy.html
+
 ├── profile.html
+
 ├── register.html
+
 ├── restaurant-menu.html
+
 ├── restaurants.html
+
 ├── terms.html
 
 
@@ -68,6 +103,9 @@ Food-Delivery-Service/
 
 # 🤝 Future Enhancements
 Integrate a real backend (Node.js/Python) and Database (MongoDB/SQL).
+
 Connect to a real payment gateway (Stripe/PayPal).
+
 Implement Google Maps API for accurate delivery location tracking.
+
 Add "Dark Mode" toggle.
