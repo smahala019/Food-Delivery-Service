@@ -23,10 +23,15 @@ Mobile Navigation: Fully responsive hamburger menu for smaller screens.
 
 # 🛠️ Technologies Used
 HTML5: Semantic structure.
+
 CSS3: Custom styling, Flexbox, CSS Grid, Animations, and Media Queries.
+
 JavaScript (ES6+): DOM manipulation, Event Listeners, LocalStorage API.
+
 External Libraries:
+
 FontAwesome 6.4.0 (Icons)
+
 Picsum Photos (Placeholder Images)
 
 # 📂 Project Structure
