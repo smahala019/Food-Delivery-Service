@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-login:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: white;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-logout:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/faq/1920/600.jpg');
+            background-position: center;
+            background-size: cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            padding: 80px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .search-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-color: #ff7200;
+        }
+        
+        .search-btn {
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background-color: #e56500;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            background-color: white;
+            border: 2px solid #eee;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-tab:hover {
+            border-color: #ff7200;
+            color: #ff7200;
+        }
+        
+        .category-tab.active {
+            background-color: #ff7200;
+            color: white;
+            border-color: #ff7200;
+        }
+        
+        .faq-container {
+            margin-bottom: 50px;
+        }
+        
+        .faq-item {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #ff7200;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .help-section {
+            background: linear-gradient(to right, #ff7200, #ff9500);
+            padding: 60px 5%;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        
+        .help-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .help-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .help-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .help-btn {
+            background-color: white;
+            color: #ff7200;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .help-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 5% 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ff7200;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff7200;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            color: white;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #ff7200;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #ccc;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0,0,0,0.9);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .nav-right {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .help-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <h2 class="logo">Mahala Company</h2>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="auth-buttons" id="authButtons">
+                <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            </div>
+            <div class="user-profile" id="userProfile">
+                <div class="user-avatar" id="userAvatar"><a href="profile.html" style="text-decoration: none;"></a>U</a></div>
+                <div class="user-info">
+                    <span class="user-name" id="userName">User Name</span>
+                    <span class="user-email" id="userEmail">user@example.com</span>
+                </div>
+                <button class="btn btn-logout" onclick="logout()">Logout</button>
+            </div>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Mahala Company</p>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" id="faqSearch" placeholder="Search for answers..." onkeyup="searchFAQs()">
+                <button class="search-btn" onclick="searchFAQs()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="category-tabs">
+            <div class="category-tab active" onclick="filterCategory('all', this)">All</div>
+            <div class="category-tab" onclick="filterCategory('ordering', this)">Ordering</div>
+            <div class="category-tab" onclick="filterCategory('payment', this)">Payment</div>
+            <div class="category-tab" onclick="filterCategory('delivery', this)">Delivery</div>
+            <div class="category-tab" onclick="filterCategory('account', this)">Account</div>
+            <div class="category-tab" onclick="filterCategory('technical', this)">Technical</div>
+        </div>
+        
+        <div class="faq-container" id="faqContainer">
+            <div class="faq-item" data-category="ordering">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I place an order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    To place an order, simply browse restaurants, select your favorite dishes, add them to cart, and proceed to checkout. Enter your delivery address, choose payment method, and confirm your order. You'll receive real-time updates on your order status.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="ordering">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I schedule an order for later?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! You can schedule orders up to 7 days in advance. Simply select your items, proceed to checkout, and choose "Schedule Order" instead of "Order Now". Select your preferred date and time, and we'll deliver at your convenience.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="ordering">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I cancel my order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    You can cancel your order from the order tracking page if the restaurant hasn't started preparing it yet. Go to "My Orders", select the order, and click "Cancel Order". If the restaurant has already started preparation, cancellation may not be possible.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="payment">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What payment methods are accepted?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We accept various payment methods including credit/debit cards, net banking, UPI, digital wallets (PayTM, PhonePe, Google Pay), and cash on delivery. All online payments are secured with industry-standard encryption.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="payment">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is it safe to save my card details?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, absolutely. We use PCI-DSS compliant payment gateways and your card details are encrypted and stored securely. We never store your complete card information on our servers, ensuring maximum security.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="payment">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I apply a promo code?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    During checkout, you'll see a field labeled "Enter Promo Code". Simply type or paste your code and click "Apply". The discount will be immediately reflected in your order total if the code is valid and applicable.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="delivery">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How long does delivery take?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Delivery time varies based on restaurant preparation time, distance, and traffic conditions. Typically, deliveries take 30-45 minutes. You'll see the estimated delivery time when ordering and can track your delivery in real-time.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="delivery">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What if my delivery is late?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    If your order is significantly delayed, you can contact our customer support through the app or website. We may offer compensation in the form of coupons or refunds depending on the situation. You'll also receive real-time updates about any delays.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="delivery">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I track my delivery?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! Once your order is confirmed, you can track it in real-time. Go to "My Orders" and select your active order. You'll see the restaurant's location, preparation status, and your delivery partner's real-time location on the map.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="account">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I create an account?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Click on "Sign Up" and enter your name, email, and phone number. You'll receive an OTP to verify your number. Once verified, your account will be created. You can also sign up using Google or Facebook for quicker registration.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="account">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I reset my password?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Click on "Forgot Password" on the login page. Enter your registered email or phone number, and we'll send you a reset link or OTP. Follow the instructions to create a new password.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="account">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I change my delivery address?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, you can add multiple delivery addresses in your profile settings. When placing an order, you can select from saved addresses or add a new one. You can also change the delivery address before confirming your order.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>The app is not working properly. What should I do?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Try these troubleshooting steps: 1) Clear app cache, 2) Update to the latest version, 3) Restart your device, 4) Check your internet connection. If issues persist, contact our technical support team with details about the problem.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Why can't I see restaurants in my area?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Make sure location services are enabled and you've granted permission to the app. Check that your delivery address is correct and within our service area. If you still can't see restaurants, try refreshing the app or updating your location.
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>My payment failed but money was deducted. What now?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Don't worry! If money was deducted but the payment failed, it will be automatically refunded to your original payment method within 5-7 business days. If you don't receive the refund, contact our support team with transaction details.
+                </div>
+            </div>
+        </div>
+        
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No results found</h3>
+            <p>Try searching with different keywords or browse our categories</p>
+        </div>
+    </section>
+    
+    <section class="help-section">
+        <div class="help-content">
+            <h2>Still Need Help?</h2>
+            <p>Can't find what you're looking for? Our support team is here to help</p>
+            <div class="help-buttons">
+                <a href="contact.html" class="help-btn">
+                    <i class="fas fa-headset"></i> Contact Support
+                </a>
+                <a href="help.html" class="help-btn">
+                    <i class="fas fa-book"></i> Help Center
+                </a>
+                <a href="mailto:support@mahalacompany.com" class="help-btn">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Mahala Company</h3>
+                <p>We're dedicated to bringing you the best food from your favorite restaurants, delivered right to your doorstep.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="help.html">Help Center</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Get in Touch</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, Culinary City</li>
+                    <li><i class="fas fa-phone"></i> +91 (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@mahalacompany.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mahala Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        // Check if user is logged in
+        function checkUserLogin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (currentUser) {
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                
+                const firstLetter = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('userAvatar').textContent = firstLetter;
+                
+                return true;
+            } else {
+                document.getElementById('authButtons').style.display = 'flex';
+                document.getElementById('userProfile').style.display = 'none';
+                
+                return false;
+            }
+        }
+        
+        function logout() {
+            localStorage.removeItem('currentUser');
+            showNotification('You have been logged out successfully', 'success');
+            checkUserLogin();
+            updateCartCount();
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+        
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let count = 0;
+            cart.forEach(item => {
+                count += item.quantity;
+            });
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const allQuestions = document.querySelectorAll('.faq-question');
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // Close all other FAQs
+            allQuestions.forEach(q => {
+                if (q !== element) {
+                    q.classList.remove('active');
+                }
+            });
+            
+            allAnswers.forEach(a => {
+                if (a !== answer) {
+                    a.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            element.classList.toggle('active');
+            answer.classList.toggle('active');
+            
+            // Track FAQ views
+            const questionText = element.querySelector('span').textContent;
+            const faqViews = JSON.parse(localStorage.getItem('faqViews')) || {};
+            faqViews[questionText] = (faqViews[questionText] || 0) + 1;
+            localStorage.setItem('faqViews', JSON.stringify(faqViews));
+        }
+        
+        function filterCategory(category, element) {
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            element.classList.add('active');
+            
+            // Filter FAQs
+            const faqItems = document.querySelectorAll('.faq-item');
+            let visibleCount = 0;
+            
+            faqItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+            
+            // Track category views
+            const categoryViews = JSON.parse(localStorage.getItem('faqCategoryViews')) || {};
+            categoryViews[category] = (categoryViews[category] || 0) + 1;
+            localStorage.setItem('faqCategoryViews', JSON.stringify(categoryViews));
+        }
+        
+        function searchFAQs() {
+            const searchTerm = document.getElementById('faqSearch').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            let visibleCount = 0;
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                    
+                    // Highlight search term
+                    if (searchTerm) {
+                        highlightSearchTerm(item, searchTerm);
+                    } else {
+                        removeHighlight(item);
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+            
+            // Track searches
+            if (searchTerm) {
+                const searches = JSON.parse(localStorage.getItem('faqSearches')) || [];
+                searches.push({
+                    term: searchTerm,
+                    timestamp: new Date().toISOString(),
+                    results: visibleCount
+                });
+                localStorage.setItem('faqSearches', JSON.stringify(searches));
+            }
+        }
+        
+        function highlightSearchTerm(element, term) {
+            const question = element.querySelector('.faq-question span');
+            const answer = element.querySelector('.faq-answer');
+            
+            // Simple highlight (in production, use a proper highlighting library)
+            const questionText = question.textContent;
+            const answerText = answer.textContent;
+            
+            // This is a simplified version - in production, you'd want to preserve HTML structure
+            question.innerHTML = questionText.replace(new RegExp(term, 'gi'), match => `<mark>${match}</mark>`);
+            answer.innerHTML = answerText.replace(new RegExp(term, 'gi'), match => `<mark>${match}</mark>`);
+        }
+        
+        function removeHighlight(element) {
+            const question = element.querySelector('.faq-question span');
+            const answer = element.querySelector('.faq-answer');
+            
+            // Remove marks and restore original text
+            question.innerHTML = question.textContent;
+            answer.innerHTML = answer.textContent;
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserLogin();
+            updateCartCount();
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('menu');
+                const mobileMenuBtn = document.getElementById('mobile-menu');
+                
+                if (!menu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Track page visit
+            const pageVisits = JSON.parse(localStorage.getItem('faqPageVisits')) || 0;
+            localStorage.setItem('faqPageVisits', pageVisits + 1);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-login:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-logout:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .success-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 5%;
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 4rem;
+        }
+        
+        .success-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .success-details {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .order-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .order-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        
+        .order-message {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .action-btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e56500;
+        }
+        
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <a href="index.html" class="logo">Mahala Company</a>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="auth-buttons" id="authButtons">
+            <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <div class="user-info">
+                <span class="user-name" id="userName">User Name</span>
+                <span class="user-email" id="userEmail">user@example.com</span>
+            </div>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <div class="success-container">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1 class="success-title">Payment Successful!</h1>
+        <p class="success-message">Your payment has been processed successfully</p>
+        
+        <div class="success-details">
+            <div class="order-number">Order #ORD123456</div>
+            <div class="order-amount">₹�1,299.00</div>
+            <p class="order-message">Your order has been confirmed and will be delivered soon</p>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn btn-primary" onclick="trackOrder()">Track Order</button>
+            <button class="action-btn btn-secondary" onclick="window.location.href='restaurants.html'">Order More</button>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        // Get order ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('id');
+        
+        // Check if user is logged in
+        function checkUserLogin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (currentUser) {
+                // User is logged in, show user profile
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                
+                // Update user profile information
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                
+                // Set user avatar with first letter of name
+                const firstLetter = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('user-avatar').textContent = firstLetter;
+                
+                return true; // User is logged in
+            } else {
+                // User is not logged in, show login/signup buttons
+                document.getElementById('authButtons').style.display = 'display: flex';
+                document.getElementById('userProfile').style.display = 'none';
+                
+                return false; // User is not logged in
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('currentUser');
+            showNotification('You have been logged out successfully', 'success');
+            checkUserLogin();
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+        
+        // Track order
+        function trackOrder() {
+            if (orderId) {
+                window.location.href = `order-tracking.html?id=${orderId}`;
+            } else {
+                window.location.href = 'order-tracking.html';
+            }
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Initialize
+        checkUserLogin();
+    </script>
+</body>
+</html>

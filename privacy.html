@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-login:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-logout:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .page-header {
+            background: linear-gradient(to right, #ff7200, #ff9500);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .privacy-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 5%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .privacy-content {
+            padding: 40px;
+        }
+        
+        .privacy-section {
+            margin-bottom: 40px;
+        }
+        
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .privacy-section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .privacy-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .privacy-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .privacy-section a {
+            color: #ff7200;
+            text-decoration: none;
+        }
+        
+        .privacy-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .contact-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            padding: 12px 25px;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background-color: #e56500;
+        }
+        
+        .last-updated {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .privacy-content {
+                padding: 20px;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <a href="index.html" class="logo">Mahala Company</a>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="auth-buttons" id="authButtons">
+            <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <div class="user-info">
+                <span class="user-name" id="userName">User Name</span>
+                <span class="user-email" id="userEmail">user@example.com</span>
+            </div>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <div class="page-header">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy is important to us. Learn how we collect, use, and protect your information.</p>
+    </div>
+    
+    <div class="privacy-container">
+        <div class="privacy-content">
+            <div class="privacy-section">
+                <h2>1. Information We Collect</h2>
+                <p>We collect information you provide directly to us, such as when you create an account, place an order, or contact us for support.</p>
+                <p>This includes:</p>
+                <ul>
+                    <li>Name and contact details</li>
+                    <li>Email address and phone number</li>
+                    <li>Delivery addresses</li>
+                    <li>Payment information</li>
+                    <li>Order history and preferences</li>
+                    <li>Communication with customer support</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>2. Information We Collect Automatically</h2>
+                <p>We automatically collect certain information when you use our Service:</p>
+                <ul>
+                    <li>Device information and browser details</li>
+                    <li>IP address and location data</li>
+                    <li>Usage patterns and preferences</li>
+                    <li>Cookies and similar tracking technologies</li>
+                    <li>Performance and crash data</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use your information to:</p>
+                <ul>
+                    <li>Provide and improve our services</li>
+                    <li>Process your orders and payments</li>
+                    <li>Communicate with you about your orders</li>
+                    <li>Personalize your experience</li>
+                    <li>Send you notifications and updates</li>
+                    <li>Analyze usage patterns to improve our Service</li>
+                </ul>
+            </div>
+                
+                <div class="privacy-section">
+                    <h2>4. Information Sharing</h2>
+                    <p>We may share your information with:</p>
+                    <ul>
+                        <li>Restaurants for order fulfillment</li>
+                        <li>Delivery partners for order delivery</li>
+                        <li>Payment processors for payment processing</li>
+                        <li>Analytics providers for service improvement</li>
+                        <li>Legal authorities when required by law</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>5. Data Security</h2>
+                    <p>We implement industry-standard security measures to protect your information:</p>
+                    <ul>
+                        <li>SSL encryption for all data transmissions</li>
+                        <li>Secure payment processing</li>
+                        <li>Regular security audits</li>
+                        <li>Employee training on data protection</li>
+                        <li>Access controls and authentication</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>6> Your Rights</h2>
+                    <p>You have the following rights regarding your personal information:</p>
+                    <ul>
+                        <li>Access to your personal information</li>
+                        <li>Correct inaccurate information</li>
+                        <li>Delete your account and data</li>
+                        <li>Opt-out of marketing communications</li>
+                        <li>Request data portability</li>
+                        <li>Restrict processing of your information</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>7. Children's Privacy</h2>
+                    <p>Our Service is not intended for children under 13. We do not knowingly collect personal information from children without parental consent.</p>
+                    <p>If we become aware that we have collected personal information from a child without parental consent, we will take steps to delete it.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>8. International Data Transfers</h2>
+                    <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for international data transfers.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>9. Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the updated policy on our website and, where applicable, via email.</p>
+                    <p>Your continued use of the Service after such changes constitutes your acceptance of the updated policy.</p>
+                </div>
+                
+                <div class="privacy-section">
+                    <h2>10. Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                    <ul>
+                        <li>Email: <a href="mailto:privacy@mahalacompany.com">privacy@mahalacompany.com</a></li>
+                        <li>
+                        <li>Phone: +91 (123) 456-7890</li>
+                        <li>
+                            <li>Address: 123 Food Street, Culinary City, 560001</li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="contact-section">
+                <h3>Need Help with Your Privacy?</h3>
+                <p>Our privacy team is here to assist you with any privacy-related questions or concerns.</p>
+                
+                <div class="contact-buttons">
+                    <button class="contact-btn" onclick="window.location.href='mailto:privacy@mahalacompany.com'">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </button>
+                    <button class="contact-btn" onclick="window.location.href='tel:+911234567890'">
+                        <i class="fas fa-phone"></i> Call Us
+                    </button>
+                </div>
+            </div>
+            
+            <div class="last-updated">
+                <p>Last updated: January 1, 2025</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        // Check if user is logged in
+        function checkUserLogin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (currentUser) {
+                // User is logged in, show user profile
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                
+                // Update user profile information
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                
+                // Set user avatar with first letter of name
+                const firstLetter = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('userAvatar').textContent = firstLetter;
+                
+                return true; // User is logged in
+            } else {
+                // User is not logged in, show login/signup buttons
+                document.getElementById('authButtons').style.display = 'flex';
+                document.getElementById('userProfile').style.display = 'none';
+                
+                return false; // User is not logged in
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('currentUser');
+            showNotification('You have been logged out successfully', 'success');
+            checkUserLogin();
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Initialize
+        checkUserLogin();
+    </script>
+</body>
+</html>

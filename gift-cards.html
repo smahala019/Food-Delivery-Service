@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-login:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: white;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-logout:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/gift-cards/1920/600.jpg');
+            background-position: center;
+            background-size: cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .gift-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .gift-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .gift-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-design {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-design.classic {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-design.premium {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .card-design.festive {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .card-design.corporate {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+        
+        .card-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .card-logo img {
+            width: 60px;
+            height: auto;
+        }
+        
+        .card-amount {
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .card-content {
+            padding: 30px;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .card-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .card-features li {
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-features i {
+            color: #ff7200;
+        }
+        
+        .price-tag {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            color: #ff7200;
+            font-weight: bold;
+        }
+        
+        .discount-badge {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .buy-btn:hover {
+            background-color: #e56500;
+        }
+        
+        .how-it-works {
+            background-color: white;
+            padding: 60px 5%;
+            margin-top: 80px;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .step-description {
+            color: #666;
+        }
+        
+        .faq-section {
+            padding: 80px 5%;
+            background-color: #f8f9fa;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .balance-check {
+            background: linear-gradient(to right, #ff7200, #ff9500);
+            padding: 60px 5%;
+            text-align: center;
+            color: white;
+        }
+        
+        .balance-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .balance-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .balance-form {
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .balance-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+        }
+        
+        .balance-btn {
+            background-color: white;
+            color: #ff7200;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .balance-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 5% 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ff7200;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff7200;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            color: white;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #ff7200;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #ccc;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0,0,0,0.9);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .nav-right {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .balance-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <h2 class="logo">Mahala Company</h2>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="auth-buttons" id="authButtons">
+                <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            </div>
+            <div class="user-profile" id="userProfile">
+                <div class="user-avatar" id="userAvatar"><a href="profile.html" style="text-decoration: none;"></a>U</a></div>
+                <div class="user-info">
+                    <span class="user-name" id="userName">User Name</span>
+                    <span class="user-email" id="userEmail">user@example.com</span>
+                </div>
+                <button class="btn btn-logout" onclick="logout()">Logout</button>
+            </div>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Gift Cards</h1>
+            <p>The perfect gift for food lovers - Give the joy of delicious meals</p>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="section-title">
+            <h2>Choose Your Gift Card</h2>
+            <p>Select from our range of beautifully designed gift cards</p>
+        </div>
+        
+        <div class="gift-cards-container">
+            <div class="gift-card">
+                <div class="card-design classic">
+                    <div class="card-logo">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo">
+                    </div>
+                    <div class="card-amount">₹500</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Classic Gift Card</h3>
+                    <p class="card-description">Perfect for casual dining and quick bites</p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check"></i> Valid for 12 months</li>
+                        <li><i class="fas fa-check"></i> No hidden fees</li>
+                        <li><i class="fas fa-check"></i> Instant delivery via email</li>
+                    </ul>
+                    <div class="price-tag">
+                        <span class="price">₹500</span>
+                        <span class="discount-badge">Save ₹50</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyGiftCard('Classic', 500)">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="gift-card">
+                <div class="card-design premium">
+                    <div class="card-logo">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo">
+                    </div>
+                    <div class="card-amount">₹1000</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Premium Gift Card</h3>
+                    <p class="card-description">Ideal for special occasions and fine dining</p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check"></i> Valid for 12 months</li>
+                        <li><i class="fas fa-check"></i> Free delivery on all orders</li>
+                        <li><i class="fas fa-check"></i> Premium packaging</li>
+                    </ul>
+                    <div class="price-tag">
+                        <span class="price">₹1000</span>
+                        <span class="discount-badge">Save ₹100</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyGiftCard('Premium', 1000)">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="gift-card">
+                <div class="card-design festive">
+                    <div class="card-logo">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo">
+                    </div>
+                    <div class="card-amount">₹2000</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Festive Gift Card</h3>
+                    <p class="card-description">Celebrate festivals with the gift of food</p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check"></i> Valid for 15 months</li>
+                        <li><i class="fas fa-check"></i> Special festive offers</li>
+                        <li><i class="fas fa-check"></i> Personalized message</li>
+                    </ul>
+                    <div class="price-tag">
+                        <span class="price">₹2000</span>
+                        <span class="discount-badge">Save ₹250</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyGiftCard('Festive', 2000)">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="gift-card">
+                <div class="card-design corporate">
+                    <div class="card-logo">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo">
+                    </div>
+                    <div class="card-amount">₹5000</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Corporate Gift Card</h3>
+                    <p class="card-description">Perfect for employee rewards and client gifts</p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check"></i> Valid for 18 months</li>
+                        <li><i class="fas fa-check"></i> Bulk purchase discounts</li>
+                        <li><i class="fas fa-check"></i> Custom branding available</li>
+                    </ul>
+                    <div class="price-tag">
+                        <span class="price">₹5000</span>
+                        <span class="discount-badge">Save ₹500</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyGiftCard('Corporate', 5000)">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="how-it-works">
+        <div class="section-title">
+            <h2>How It Works</h2>
+            <p>Simple steps to purchase and use gift cards</p>
+        </div>
+        
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Select Card</h3>
+                <p class="step-description">Choose the perfect gift card for your needs</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Personalize</h3>
+                <p class="step-description">Add a personal message and recipient details</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Pay Securely</h3>
+                <p class="step-description">Complete your purchase with our secure payment</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Instant Delivery</h3>
+                <p class="step-description">Gift card delivered instantly via email</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="faq-section">
+        <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about our gift cards</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I redeem my gift card?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    To redeem your gift card, simply enter the unique code at checkout when placing your order. The gift card amount will be automatically deducted from your total.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I use multiple gift cards on one order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, you can use multiple gift cards on a single order. Simply enter each gift card code at checkout, and the amounts will be combined.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What happens if my order total is less than the gift card value?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    The remaining balance on your gift card will be saved for future use. You can check your balance anytime using our balance check feature.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I get a refund for my gift card?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Gift cards are non-refundable once purchased. However, they are transferable, so you can gift them to someone else if needed.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do gift cards expire?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, gift cards have an expiration date. Classic and Premium cards are valid for 12 months, Festive cards for 15 months, and Corporate cards for 18 months from the date of purchase.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="balance-check">
+        <div class="balance-content">
+            <h2>Check Gift Card Balance</h2>
+            <p>Enter your gift card code to check the remaining balance</p>
+            <form class="balance-form" onsubmit="checkBalance(event)">
+                <input type="text" class="balance-input" id="giftCardCode" placeholder="Enter gift card code" required>
+                <button type="submit" class="balance-btn">Check Balance</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Mahala Company</h3>
+                <p>We're dedicated to bringing you the best food from your favorite restaurants, delivered right to your doorstep.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="help.html">Help Center</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Get in Touch</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, Culinary City</li>
+                    <li><i class="fas fa-phone"></i> +91 (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@mahalacompany.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mahala Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        // Check if user is logged in
+        function checkUserLogin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (currentUser) {
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                
+                const firstLetter = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('userAvatar').textContent = firstLetter;
+                
+                return true;
+            } else {
+                document.getElementById('authButtons').style.display = 'flex';
+                document.getElementById('userProfile').style.display = 'none';
+                
+                return false;
+            }
+        }
+        
+        function logout() {
+            localStorage.removeItem('currentUser');
+            showNotification('You have been logged out successfully', 'success');
+            checkUserLogin();
+            updateCartCount();
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+        
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let count = 0;
+            cart.forEach(item => {
+                count += item.quantity;
+            });
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        function buyGiftCard(cardType, amount) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                showNotification('Please login to purchase gift cards', 'error');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+                return;
+            }
+            
+            // Create gift card order
+            const giftCardOrders = JSON.parse(localStorage.getItem('giftCardOrders')) || [];
+            const newOrder = {
+                id: Date.now(),
+                userId: currentUser.id,
+                cardType: cardType,
+                amount: amount,
+                purchaseDate: new Date().toISOString(),
+                status: 'pending',
+                giftCardCode: generateGiftCardCode()
+            };
+            
+            giftCardOrders.push(newOrder);
+            localStorage.setItem('giftCardOrders', JSON.stringify(giftCardOrders));
+            
+            // Add to cart for payment processing
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({
+                id: newOrder.id,
+                name: `${cardType} Gift Card`,
+                price: amount,
+                quantity: 1,
+                type: 'giftCard'
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            updateCartCount();
+            showNotification(`${cardType} Gift Card added to cart!`, 'success');
+            
+            // Redirect to cart after a short delay
+            setTimeout(() => {
+                window.location.href = 'cart.html';
+            }, 1500);
+        }
+        
+        function generateGiftCardCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 12; i++) {
+                if (i > 0 && i % 4 === 0) code += '-';
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const allQuestions = document.querySelectorAll('.faq-question');
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // Close all other FAQs
+            allQuestions.forEach(q => {
+                if (q !== element) {
+                    q.classList.remove('active');
+                }
+            });
+            
+            allAnswers.forEach(a => {
+                if (a !== answer) {
+                    a.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            element.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
+        
+        function checkBalance(event) {
+            event.preventDefault();
+            const code = document.getElementById('giftCardCode').value.trim();
+            
+            if (!code) {
+                showNotification('Please enter a gift card code', 'error');
+                return;
+            }
+            
+            // Simulate balance check
+            const giftCards = JSON.parse(localStorage.getItem('giftCardOrders')) || [];
+            const giftCard = giftCards.find(gc => gc.giftCardCode === code);
+            
+            if (giftCard) {
+                const balance = Math.floor(Math.random() * giftCard.amount);
+                showNotification(`Gift card balance: ₹${balance}`, 'success');
+            } else {
+                showNotification('Invalid gift card code', 'error');
+            }
+            
+            document.getElementById('giftCardCode').value = '';
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserLogin();
+            updateCartCount();
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('menu');
+                const mobileMenuBtn = document.getElementById('mobile-menu');
+                
+                if (!menu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

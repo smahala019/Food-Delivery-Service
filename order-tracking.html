@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-login:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-logout:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .page-header {
+            background: linear-gradient(to right, #ff7200, #ff9500);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .tracking-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+        
+        .order-search {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .search-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #ff7200;
+            box-shadow: 0 0 0 3px rgba(255, 114, 0, 0.2);
+        }
+        
+        .search-btn {
+            padding: 12px 25px;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .search-btn:hover {
+            background-color: #e56500;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(255, 114, 0, 0.3);
+        }
+        
+        .search-btn:active {
+            transform: translateY(0);
+        }
+        
+        .search-btn .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+        
+        .search-btn.loading .spinner {
+            display: inline-block;
+        }
+        
+        .search-btn.loading .btn-text {
+            opacity: 0.7;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .order-details {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .order-details.show {
+            display: block;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .order-date {
+            color: #666;
+        }
+        
+        .order-status {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .status-confirmed {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-preparing {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-on-the-way {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-delivered {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .tracking-timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #eee;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item.completed .timeline-marker {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .timeline-item.active .timeline-marker {
+            background-color: #4CAF50;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
+        
+        .timeline-content {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item.active .timeline-content {
+            background-color: #e8f5e9;
+            border-left: 3px solid #4CAF50;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-time {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .delivery-info {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .delivery-info-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .delivery-details {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .delivery-person {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .delivery-person-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .delivery-person-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .delivery-person-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .delivery-contact {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .contact-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background-color: #e56500;
+            transform: scale(1.1);
+        }
+        
+        .order-items {
+            margin-top: 30px;
+        }
+        
+        .order-items-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .order-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .order-item-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        
+        .order-item-name {
+            font-weight: 600;
+        }
+        
+        .order-item-details {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .order-item-price {
+            font-weight: 600;
+            color: #ff7200;
+        }
+        
+        .order-summary {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .summary-row.total {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .discount-row {
+            color: #4CAF50;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+        }
+        
+        .notification .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e56500;
+        }
+        
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+        
+        .live-tracking {
+            margin-top: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            display: none;
+        }
+        
+        .live-tracking.show {
+            display: block;
+        }
+        
+        .map-container {
+            height: 300px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .eta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .eta {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ff7200;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .order-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .delivery-details {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .notification {
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <a href="index.html" class="logo">Mahala Company</a>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="auth-buttons" id="authButtons">
+            <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <div class="user-info">
+                <span class="user-name" id="userName">User Name</span>
+                <span class="user-email" id="userEmail">user@example.com</span>
+            </div>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <div class="page-header">
+        <h1>Track Your Order</h1>
+        <p>Enter your order number to track the status of your delivery</p>
+    </div>
+    
+    <div class="tracking-container">
+        <div class="order-search">
+            <h2 class="search-title">Find Your Order</h2>
+            <form class="search-form" id="searchForm">
+                <input type="text" class="search-input" id="orderNumber" placeholder="Enter your order number (e.g., ORD123456)">
+                <button type="submit" class="search-btn" id="searchBtn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Track Order</span>
+                </button>
+            </form>
+        </div>
+        
+        <div class="order-details" id="orderDetails">
+            <div class="order-header">
+                <div>
+                    <h2 class="order-number" id="orderNumberDisplay">Order #ORD123456</h2>
+                    <p class="order-date" id="orderDate">Placed on Today at 12:30 PM</p>
+                </div>
+                <div class="order-status status-preparing" id="orderStatus">Preparing</div>
+            </div>
+            
+            <div class="tracking-timeline">
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Order Placed</h3>
+                            <p class="timeline-time" id="orderPlacedTime">Today at 12:30 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Order Confirmed</h3>
+                            <p class="timeline-time" id="orderConfirmedTime">Today at 12:35 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item active">
+                        <div class="timeline-marker">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Preparing</h3>
+                            <p class="timeline-time" id="orderPreparingTime">Today at 12:40 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Out for Delivery</h3>
+                            <p class="timeline-time" id="orderOutForDeliveryTime">Estimated at 1:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Delivered</h3>
+                            <p class="timeline-time" id="orderDeliveredTime">Estimated at 1:15 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="live-tracking" id="liveTracking">
+                <h3 class="delivery-info-title">Live Tracking</h3>
+                <div class="map-container">
+                    <i class="fas fa-map-marked-alt" style="font-size: 3rem;"></i>
+                    <p>Map view would be displayed here in a real application</p>
+                </div>
+                <div class="eta-info">
+                    <div>
+                        <p>Estimated Time of Arrival</p>
+                        <div class="eta" id="eta">1:15 PM</div>
+                    </div>
+                    <div>
+                        <p>Delivery Partner</p>
+                        <div id="deliveryPartnerName">John Smith</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="delivery-info" id="deliveryInfo" style="display: none;">
+                <h3 class="delivery-info-title">Delivery Information</h3>
+                <div class="delivery-details">
+                    <div class="delivery-person">
+                        <img src="https://picsum.photos/seed/deliveryperson/200/200.jpg" alt="Delivery Person" class="delivery-person-img">
+                        <div class="delivery-person-info">
+                            <h4 id="deliveryPersonName">John Smith</h4>
+                            <p>Your delivery partner</p>
+                            <div class="delivery-contact">
+                                <button class="contact-btn" title="Call">
+                                    <i class="fas fa-phone"></i>
+                                </button>
+                                <button class="contact-btn" title="Message">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-items">
+                <h3 class="order-items-title">Order Items</h3>
+                <div id="orderItemsList">
+                    <!-- Order items will be dynamically loaded here -->
+                </div>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₹0.00</span>
+                    </div>
+                    <div class="summary-row discount-row" id="discountRow" style="display: none;">
+                        <span>Discount</span>
+                        <span id="discount">-₹0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span id="deliveryFee">₹0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Taxes</span>
+                        <span id="taxes">₹0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">₹0.00</span>
+                    </div>
+                </div>
+                
+                <div class="order-actions">
+                    <button class="action-btn btn-primary" onclick="reorder()">Reorder</button>
+                    <button class="action-btn btn-secondary" onclick="downloadInvoice()">Download Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <button class="close-btn" onclick="hideNotification()">&times;</button>
+        <span id="notificationMessage"></span>
+    </div>
+    
+    <script>
+        // Check if user is logged in
+        function checkUserLogin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (currentUser) {
+                // User is logged in, show user profile
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                
+                // Update user profile information
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                
+                // Set user avatar with first letter of name
+                const firstLetter = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('userAvatar').textContent = firstLetter;
+                
+                return true; // User is logged in
+            } else {
+                // User is not logged in, show login/signup buttons
+                document.getElementById('authButtons').style.display = 'flex';
+                document.getElementById('userProfile').style.display = 'none';
+                
+                return false; // User is not logged in
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('currentUser');
+            showNotification('You have been logged out successfully', 'success');
+            checkUserLogin();
+            updateCartCount();
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+        
+        // Get current date and time
+        function getCurrentDateTime() {
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            };
+            return now.toLocaleDateString('en-US', options);
+        }
+        
+        // Get current time only
+        function getCurrentTime() {
+            const now = new Date();
+            const options = {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            };
+            return now.toLocaleTimeString('en-US', options);
+        }
+        
+        // Get order ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('id');
+        
+        // If order ID is provided in URL, auto-fill and search
+        if (orderId) {
+            document.getElementById('orderNumber').value = orderId;
+            searchOrder();
+        }
+        
+        // Form submission
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            searchOrder();
+        });
+        
+        // Search for order
+        function searchOrder() {
+            const orderNumber = document.getElementById('orderNumber').value.trim();
+            
+            if (!orderNumber) {
+                showNotification('Please enter an order number', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const searchBtn = document.getElementById('searchBtn');
+            searchBtn.classList.add('loading');
+            searchBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Get orders from localStorage
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                
+                // Find order with matching number
+                const order = orders.find(o => o.id === orderNumber);
+                
+                // Remove loading state
+                searchBtn.classList.remove('loading');
+                searchBtn.disabled = false;
+                
+                if (!order) {
+                    showNotification('Order not found. Please check your order number and try again.', 'error');
+                    return;
+                }
+                
+                // Display order details
+                displayOrderDetails(order);
+                showNotification('Order found!', 'success');
+            }, 1000);
+        }
+        
+        // Display order details
+        function displayOrderDetails(order) {
+            // Update order header
+            document.getElementById('orderNumberDisplay').textContent = `Order #${order.id}`;
+            
+            // Update order date with actual order date
+            const orderDate = new Date(order.orderDate);
+            const now = new Date();
+            const diffTime = Math.abs(now - orderDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays <= 1) {
+                // If order is from today or yesterday, show relative time
+                if (orderDate.toDateString() === now.toDateString()) {
+                    document.getElementById('orderDate').textContent = `Placed on Today at ${orderDate.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true})}`;
+                } else {
+                    document.getElementById('orderDate').textContent = `Placed on Yesterday at ${orderDate.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true})}`;
+                }
+            } else {
+                // Show full date for older orders
+                document.getElementById('orderDate').textContent = `Placed on ${orderDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})} at ${orderDate.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true})}`;
+            }
+            
+            // Update order status
+            const statusElement = document.getElementById('orderStatus');
+            statusElement.textContent = formatStatus(order.status);
+            statusElement.className = 'order-status status-' + order.status;
+            
+            // Update timeline with actual order date
+            updateTimeline(order.status, order.orderDate);
+            
+            // Show delivery info if order is out for delivery
+            if (order.status === 'on-the-way') {
+                document.getElementById('deliveryInfo').style.display = 'block';
+                document.getElementById('liveTracking').classList.add('show');
+                document.getElementById('deliveryPersonName').textContent = 'John Smith'; // In a real app, this would come from the order data
+                document.getElementById('deliveryPartnerName').textContent = 'John Smith';
+                
+                // Update ETA based on order date
+                const etaTime = new Date(orderDate.getTime() + 45 * 60000);
+                document.getElementById('eta').textContent = etaTime.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true});
+            } else {
+                document.getElementById('deliveryInfo').style.display = 'none';
+                document.getElementById('liveTracking').classList.remove('show');
+            }
+            
+            // Display order items
+            displayOrderItems(order.items);
+            
+            // Update order summary
+            updateOrderSummary(order);
+            
+            // Show order details
+            document.getElementById('orderDetails').classList.add('show');
+        }
+        
+        // Update timeline with actual order date
+        function updateTimeline(status, orderDate) {
+            const orderDateTime = new Date(orderDate);
+            
+            // Update timeline items with actual order date
+            document.getElementById('orderPlacedTime').textContent = formatTimelineTime(orderDateTime);
+            document.getElementById('orderConfirmedTime').textContent = formatTimelineTime(new Date(orderDateTime.getTime() + 5 * 60000));
+            document.getElementById('orderPreparingTime').textContent = formatTimelineTime(new Date(orderDateTime.getTime() + 10 * 60000));
+            
+            // Update timeline item states
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => item.classList.remove('completed', 'active'));
+            
+            if (status === 'confirmed') {
+                timelineItems[0].classList.add('completed');
+                timelineItems[1].classList.add('active');
+            } else if (status === 'preparing') {
+                timelineItems[0].classList.add('completed');
+                timelineItems[1].classList.add('completed');
+                timelineItems[2].classList.add('active');
+            } else if (status === 'on-the-way') {
+                timelineItems[0].classList.add('completed');
+                timelineItems[1].classList.add('completed');
+                timelineItems[2].classList.add('completed');
+                timelineItems[3].classList.add('active');
+                document.getElementById('orderOutForDeliveryTime').textContent = formatTimelineTime(new Date(orderDateTime.getTime() + 30 * 60000));
+            } else if (status === 'delivered') {
+                timelineItems[0].classList.add('completed');
+                timelineItems[1].classList.add('completed');
+                timelineItems[2].classList.add('completed');
+                timelineItems[3].classList.add('completed');
+                timelineItems[4].classList.add('active');
+                document.getElementById('orderOutForDeliveryTime').textContent = formatTimelineTime(new Date(orderDateTime.getTime() + 30 * 60000));
+                document.getElementById('orderDeliveredTime').textContent = formatTimelineTime(new Date(orderDateTime.getTime() + 45 * 60000));
+            } else {
+                // Default to preparing for unknown status
+                timelineItems[0].classList.add('completed');
+                timelineItems[1].classList.add('completed');
+                timelineItems[2].classList.add('active');
+            }
+            
+            // Show estimated times for not yet completed steps
+            if (status !== 'on-the-way' && status !== 'delivered') {
+                document.getElementById('orderOutForDeliveryTime').textContent = `Estimated at ${new Date(orderDateTime.getTime() + 30 * 60000).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true})}`;
+            }
+            
+            if (status !== 'delivered') {
+                document.getElementById('orderDeliveredTime').textContent = `Estimated at ${new Date(orderDateTime.getTime() + 45 * 60000).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true})}`;
+            }
+        }
+        
+        // Format timeline time
+        function formatTimelineTime(dateTime) {
+            const now = new Date();
+            const diffTime = Math.abs(now - dateTime);
+            const diffMinutes = Math.floor(diffTime / 60000);
+            const diffHours = Math.floor(diffTime / 3600000);
+            const diffDays = Math.floor(diffTime / 86400000);
+            
+            if (diffMinutes < 1) {
+                return 'Just now';
+            } else if (diffMinutes < 60) {
+                return `${diffMinutes} minute${diffMinutes > 1 ? 's' : ''} after`;
+            } else if (diffHours < 24) {
+                return `${diffHours} hour${diffHours > 1 ? 's' : ''} after`;
+            } else if (diffDays === 1) {
+                return 'Yesterday';
+            } else {
+                return dateTime.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+            }
+        }
+        
+        // Display order items
+        function displayOrderItems(items) {
+            const orderItemsList = document.getElementById('orderItemsList');
+            orderItemsList.innerHTML = '';
+            
+            items.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                
+                orderItem.innerHTML = `
+                    <div class="order-item-info">
+                        <img src="https://picsum.photos/seed/item${item.id}/100/100.jpg" alt="${item.name}" class="order-item-img">
+                        <div>
+                            <div class="order-item-name">${item.name}</div>
+                            <div class="order-item-details">${item.quantity} x ₹${item.price.toFixed(2)}</div>
+                        </div>
+                    </div>
+                    <div class="order-item-price">₹${(item.price * item.quantity).toFixed(2)}</div>
+                `;
+                
+                orderItemsList.appendChild(orderItem);
+            });
+        }
+        
+        // Update order summary
+        function updateOrderSummary(order) {
+            const subtotal = order.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const deliveryFee = order.deliveryOption === 'express' ? 149 : 99;
+            const taxes = subtotal * 0.05; // 5% tax
+            const discount = order.discount ? order.discount.amount : 0;
+            const total = subtotal + deliveryFee + taxes - discount;
+            
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('deliveryFee').textContent = `₹${deliveryFee.toFixed(2)}`;
+            document.getElementById('taxes').textContent = `₹${taxes.toFixed(2)}`;
+            
+            if (discount > 0) {
+                document.getElementById('discountRow').style.display = 'flex';
+                document.getElementById('discount').textContent = `-₹${discount.toFixed(2)}`;
+            } else {
+                document.getElementById('discountRow').style.display = 'none';
+            }
+            
+            document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+        }
+        
+        // Format status
+        function formatStatus(status) {
+            switch (status) {
+                case 'confirmed':
+                    return 'Confirmed';
+                case 'preparing':
+                    return 'Preparing';
+                case 'on-the-way':
+                    return 'On the Way';
+                case 'delivered':
+                    return 'Delivered';
+                default:
+                    return 'Processing';
+            }
+        }
+        
+        // Reorder function
+        function reorder() {
+            const orderNumber = document.getElementById('orderNumberDisplay').textContent.replace('Order #', '');
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders.find(o => o.id === orderNumber);
+            
+            if (order) {
+                // Add items back to cart
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                order.items.forEach(item => {
+                    // Check if item already exists in cart
+                    const existingItemIndex = cart.findIndex(i => i.id === item.id);
+                    
+                    if (existingItemIndex >= 0) {
+                        // Update quantity if item already exists
+                        cart[existingItemIndex].quantity += item.quantity;
+                    } else {
+                        // Add new item to cart
+                        cart.push({...item});
+                    }
+                });
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                showNotification('Items added to cart successfully', 'success');
+                
+                // Redirect to cart after a short delay
+                setTimeout(() => {
+                    window.location.href = 'cart.html';
+                }, 1500);
+            }
+        }
+        
+        // Download invoice function
+        function downloadInvoice() {
+            const orderNumber = document.getElementById('orderNumberDisplay').textContent.replace('Order #', '');
+            
+            // In a real application, this would generate and download a PDF invoice
+            // For demo purposes, we'll just show a notification
+            showNotification(`Invoice for ${orderNumber} would be downloaded in a real application`, 'success');
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notificationMessage');
+            
+            notificationMessage.textContent = message;
+            notification.className = 'notification show ' + type;
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                hideNotification();
+            }, 5000);
+        }
+        
+        // Hide notification
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('show');
+        }
+        
+        // Update cart count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let count = 0;
+            cart.forEach(item => {
+                count += item.quantity;
+            });
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        // Initialize
+        checkUserLogin();
+        updateCartCount();
+        
+        // Update times every minute for active orders
+        setInterval(() => {
+            const orderDetails = document.getElementById('orderDetails');
+            if (orderDetails.classList.contains('show')) {
+                const orderNumber = document.getElementById('orderNumberDisplay').textContent.replace('Order #', '');
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                const order = orders.find(o => o.id === orderNumber);
+                
+                if (order && order.status !== 'delivered') {
+                    updateTimeline(order.status, order.orderDate);
+                }
+            }
+        }, 60000); // Update every minute 1083
+    </script>
+</body>
+</html>

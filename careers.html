@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-login:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: white;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-logout:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/careers/1920/600.jpg');
+            background-position: center;
+            background-size: cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .value-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .openings-container {
+            margin-top: 50px;
+        }
+        
+        .job-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        .job-type {
+            background-color: #ff7200;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .job-details {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .job-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .job-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .apply-btn {
+            background-color: #ff7200;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background-color: #e56500;
+        }
+        
+        .benefits-section {
+            background-color: white;
+            padding: 80px 5%;
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefit-item {
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: #ff7200;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .benefit-description {
+            color: #666;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 5% 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ff7200;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff7200;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            color: white;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #ff7200;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #ccc;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0,0,0,0.9);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .nav-right {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <h2 class="logo">Mahala Company</h2>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="auth-buttons" id="authButtons">
+                <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            </div>
+            <div class="user-profile" id="userProfile">
+                <div class="user-avatar" id="userAvatar"><a href="profile.html" style="text-decoration: none;"></a>U</a></div>
+                <div class="user-info">
+                    <span class="user-name" id="userName">User Name</span>
+                    <span class="user-email" id="userEmail">user@example.com</span>
+                </div>
+                <button class="btn btn-logout" onclick="logout()">Logout</button>
+            </div>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Join Our Team</h1>
+            <p>Build your career with a company that's revolutionizing food delivery</p>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="section-title">
+            <h2>Why Work With Us</h2>
+            <p>We're more than just a food delivery company - we're a family</p>
+        </div>
+        
+        <div class="values-container">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="value-title">Innovation</h3>
+                <p class="value-description">We're constantly pushing boundaries and finding new ways to make food delivery better for everyone.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="value-title">Teamwork</h3>
+                <p class="value-description">We believe in the power of collaboration and supporting each other to achieve great things together.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="value-title">Passion</h3>
+                <p class="value-description">We're passionate about food and dedicated to creating exceptional experiences for our customers.</p>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <h2>Open Positions</h2>
+            <p>Find your perfect role with us</p>
+        </div>
+        
+        <div class="openings-container">
+            <div class="job-card">
+                <div class="job-header">
+                    <h3 class="job-title">Senior Frontend Developer</h3>
+                    <span class="job-type">Full-time</span>
+                </div>
+                <div class="job-details">
+                    <div class="job-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bangalore, India</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-briefcase"></i>
+                        <span>3-5 years</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>15-25 LPA</span>
+                    </div>
+                </div>
+                <p class="job-description">We're looking for an experienced frontend developer to join our engineering team and help build amazing user experiences.</p>
+                <button class="apply-btn" onclick="applyForJob('Senior Frontend Developer')">Apply Now</button>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <h3 class="job-title">Marketing Manager</h3>
+                    <span class="job-type">Full-time</span>
+                </div>
+                <div class="job-details">
+                    <div class="job-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mumbai, India</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-briefcase"></i>
+                        <span>5-7 years</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>20-30 LPA</span>
+                    </div>
+                </div>
+                <p class="job-description">Lead our marketing initiatives and help grow our brand presence across multiple channels.</p>
+                <button class="apply-btn" onclick="applyForJob('Marketing Manager')">Apply Now</button>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <h3 class="job-title">Delivery Partner</h3>
+                    <span class="job-type">Part-time</span>
+                </div>
+                <div class="job-details">
+                    <div class="job-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Multiple Cities</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Fresher</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>15-20K/month</span>
+                    </div>
+                </div>
+                <p class="job-description">Join our delivery fleet and help bring delicious food to customers' doorsteps.</p>
+                <button class="apply-btn" onclick="applyForJob('Delivery Partner')">Apply Now</button>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <h3 class="job-title">Customer Support Executive</h3>
+                    <span class="job-type">Full-time</span>
+                </div>
+                <div class="job-details">
+                    <div class="job-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Remote</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-briefcase"></i>
+                        <span>1-2 years</span>
+                    </div>
+                    <div class="job-detail">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>3-5 LPA</span>
+                    </div>
+                </div>
+                <p class="job-description">Help our customers have the best experience possible by providing excellent support.</p>
+                <button class="apply-btn" onclick="applyForJob('Customer Support Executive')">Apply Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="benefits-section">
+        <div class="section-title">
+            <h2>Benefits & Perks</h2>
+            <p>We take care of our team</p>
+        </div>
+        
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="benefit-title">Health Insurance</h3>
+                <p class="benefit-description">Comprehensive health coverage for you and your family</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="benefit-title">Free Meals</h3>
+                <p class="benefit-description">Enjoy free meals from our partner restaurants</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="benefit-title">Learning & Development</h3>
+                <p class="benefit-description">Continuous learning opportunities and skill development</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <h3 class="benefit-title">Flexible Time Off</h3>
+                <p class="benefit-description">Take time when you need it with our flexible leave policy</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Mahala Company</h3>
+                <p>We're dedicated to bringing you the best food from your favorite restaurants, delivered right to your doorstep.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="help.html">Help Center</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Get in Touch</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, Culinary City</li>
+                    <li><i class="fas fa-phone"></i> +91 (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@mahalacompany.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mahala Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Check if user is logged in
+function checkUserLogin() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (currentUser) {
+        document.getElementById('authButtons').style.display = 'none';
+        document.getElementById('userProfile').style.display = 'flex';
+        
+        document.getElementById('userName').textContent = currentUser.name;
+        document.getElementById('userEmail').textContent = currentUser.email;
+        
+        const firstLetter = currentUser.name.charAt(0).toUpperCase();
+        document.getElementById('userAvatar').textContent = firstLetter;
+        
+        return true;
+    } else {
+        document.getElementById('authButtons').style.display = 'flex';
+        document.getElementById('userProfile').style.display = 'none';
+        
+        return false;
+    }
+}
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    showNotification('You have been logged out successfully', 'success');
+    checkUserLogin();
+    updateCartCount();
+}
+
+// Mobile menu toggle
+document.getElementById('mobile-menu').addEventListener('click', function() {
+    document.getElementById('menu').classList.toggle('active');
+});
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let count = 0;
+    cart.forEach(item => {
+        count += item.quantity;
+    });
+    document.getElementById('cartCount').textContent = count;
+}
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = 'notification show ' + type;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#333'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 1000;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateY(0)';
+        notification.style.opacity = '1';
+    }, 100);
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateY(100px)';
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+function applyForJob(jobTitle) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (!currentUser) {
+        showNotification('Please login to apply for this position', 'error');
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 1500);
+        return;
+    }
+    
+    // Store application in localStorage
+    const applications = JSON.parse(localStorage.getItem('jobApplications')) || [];
+    const newApplication = {
+        id: Date.now(),
+        jobTitle: jobTitle,
+        applicantName: currentUser.name,
+        applicantEmail: currentUser.email,
+        applicationDate: new Date().toISOString(),
+        status: 'pending'
+    };
+    
+    applications.push(newApplication);
+    localStorage.setItem('jobApplications', JSON.stringify(applications));
+    
+    showNotification(`Application submitted for ${jobTitle}!`, 'success');
+    
+    // Scroll to top after application
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    checkUserLogin();
+    updateCartCount();
+    
+    // Add smooth scroll behavior for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const menu = document.getElementById('menu');
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        
+        if (!menu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            menu.classList.remove('active');
+        }
+    });
+    
+    // Add hover effect to job cards
+    const jobCards = document.querySelectorAll('.job-card');
+    jobCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+    });
+    
+    // Track page view
+    const pageView = {
+        page: 'careers',
+        timestamp: new Date().toISOString(),
+        userId: currentUser ? currentUser.id : 'anonymous'
+    };
+    
+    const pageViews = JSON.parse(localStorage.getItem('pageViews')) || [];
+    pageViews.push(pageView);
+    localStorage.setItem('pageViews', JSON.stringify(pageViews));
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        document.getElementById('menu').classList.remove('active');
+    }
+});
+</script>
+</body>
+</html>

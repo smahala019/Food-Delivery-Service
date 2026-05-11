@@ -1,0 +1,3318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-login:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-logout:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .restaurant-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .restaurant-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .restaurant-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 30px 5%;
+        }
+        
+        .restaurant-info {
+            color: white;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .restaurant-name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .restaurant-cuisine {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .restaurant-details {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .restaurant-detail {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .restaurant-detail i {
+            color: #ff7200;
+        }
+        
+        .restaurant-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 5%;
+            gap: 30px;
+        }
+        
+        .menu-section {
+            flex: 2;
+        }
+        
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .category-tab {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tab.active {
+            background-color: #ff7200;
+            color: white;
+            border-color: #ff7200;
+        }
+        
+        .category-tab:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .category-tab.active:hover {
+            background-color: #e56500;
+        }
+        
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .menu-item {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .menu-item-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .menu-item-info {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .menu-item-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .menu-item-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff7200;
+        }
+        
+        .menu-item-description {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .menu-item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .menu-item-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .menu-item-rating i {
+            color: #ff7200;
+        }
+        
+        .menu-item-tags {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-tag {
+            background-color: #f1f1f1;
+            color: #666;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .menu-item-tag.veg {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .menu-item-tag.non-veg {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .menu-item-tag.spicy {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+        
+        .add-to-cart {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            background-color: #f1f1f1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .quantity-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .quantity-value {
+            width: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .add-btn {
+            padding: 8px 15px;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-btn:hover {
+            background-color: #e56500;
+        }
+        
+        .cart-section {
+            flex: 1;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .cart-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-item-quantity-control {
+            display: flex;
+            align-items: center;
+            background-color: #f1f1f1;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .cart-item-quantity-btn {
+            width: 25px;
+            height: 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cart-item-quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .cart-item-quantity-value {
+            width: 25px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff7200;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-remove:hover {
+            text-decoration: underline;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 20px 0;
+            color: #666;
+        }
+        
+        .cart-summary {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .summary-row.total {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .promo-code {
+            margin-bottom: 15px;
+        }
+        
+        .promo-input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .promo-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .apply-promo-btn {
+            padding: 8px 12px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .apply-promo-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .promo-message {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .promo-message.success {
+            color: #4CAF50;
+            display: block;
+        }
+        
+        .promo-message.error {
+            color: #f44336;
+            display: block;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #e56500;
+        }
+        
+        .checkout-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+        }
+        
+        .notification .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .customization-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .customization-modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .customization-options {
+            margin-bottom: 20px;
+        }
+        
+        .customization-group {
+            margin-bottom: 20px;
+        }
+        
+        .customization-group-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .customization-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .customization-option-name {
+            flex: 1;
+        }
+        
+        .customization-option-price {
+            color: #ff7200;
+            font-weight: 600;
+        }
+        
+        .customization-checkbox {
+            margin-right: 10px;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .modal-total {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .add-to-cart-modal-btn {
+            padding: 10px 20px;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-to-cart-modal-btn:hover {
+            background-color: #e56500;
+        }
+        
+        @media (max-width: 992px) {
+            .restaurant-content {
+                flex-direction: column;
+            }
+            
+            .cart-section {
+                position: static;
+            }
+            
+            .menu-item-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .restaurant-name {
+                font-size: 1.8rem;
+            }
+            
+            .restaurant-cuisine {
+                font-size: 1rem;
+            }
+            
+            .menu-item {
+                flex-direction: column;
+            }
+            
+            .menu-item-img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .restaurant-name {
+                font-size: 1.5rem;
+            }
+            
+            .category-tabs {
+                justify-content: flex-start;
+            }
+            
+            .menu-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <a href="index.html" class="logo">Mahala Company</a>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="auth-buttons" id="authButtons">
+            <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <div class="user-info">
+                <span class="user-name" id="userName">User Name</span>
+                <span class="user-email" id="userEmail">user@example.com</span>
+            </div>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <div class="restaurant-header">
+        <img id="restaurantImage" src="" alt="Restaurant">
+        <div class="restaurant-header-overlay">
+            <div class="restaurant-info">
+                <h1 class="restaurant-name" id="restaurantName"></h1>
+                <p class="restaurant-cuisine" id="restaurantCuisine"></p>
+                <div class="restaurant-details">
+                    <div class="restaurant-detail">
+                        <i class="fas fa-star"></i>
+                        <span id="restaurantRating"></span>
+                    </div>
+                    <div class="restaurant-detail">
+                        <i class="fas fa-clock"></i>
+                        <span id="restaurantDeliveryTime"></span>
+                    </div>
+                    <div class="restaurant-detail">
+                        <i class="fas fa-truck"></i>
+                        <span id="restaurantDeliveryFee"></span>
+                    </div>
+                    <div class="restaurant-detail">
+                        <i class="fas fa-tag"></i>
+                        <span id="restaurantPromo"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="restaurant-content">
+        <div class="menu-section">
+            <div class="category-tabs" id="categoryTabs">
+                <!-- Category tabs will be dynamically loaded here -->
+            </div>
+            
+            <div class="menu-items" id="menuItems">
+                <!-- Menu items will be dynamically loaded here -->
+            </div>
+        </div>
+        
+        <div class="cart-section">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h3 class="cart-title">Your Cart</h3>
+                    <span id="cartItemsCount">0 items</span>
+                </div>
+                
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-cart">
+                        <p>Your cart is empty</p>
+                        <p>Add items from the menu to get started</p>
+                    </div>
+                </div>
+                
+                <div class="promo-code">
+                    <div class="promo-input-group">
+                        <input type="text" class="promo-input" id="promoInput" placeholder="Enter promo code">
+                        <button class="apply-promo-btn" onclick="applyPromoCode()">Apply</button>
+                    </div>
+                    <div class="promo-message" id="promoMessage"></div>
+                </div>
+                
+                <div class="cart-summary" id="cartSummary" style="display: none;">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₹0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span id="deliveryFee">₹0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Taxes</span>
+                        <span id="taxes">₹0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">₹0.00</span>
+                    </div>
+                    
+                    <button class="checkout-btn" id="checkoutBtn" onclick="window.location.href='checkout.html'">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="customization-modal" id="customizationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Customize Your Order</h2>
+                <button class="close-modal" onclick="closeCustomizationModal()">&times;</button>
+            </div>
+            
+            <div class="customization-options" id="customizationOptions">
+                <!-- Customization options will be dynamically loaded here -->
+            </div>
+            
+            <div class="modal-footer">
+                <div class="modal-total" id="modalTotal">₹0.00</div>
+                <button class="add-to-cart-modal-btn" id="addToCartModalBtn" onclick="addToCartFromModal()">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <button class="close-btn" onclick="hideNotification()">&times;</button>
+        <span id="notificationMessage"></span>
+    </div>
+    
+    <script>
+        // Restaurant data with expanded menu items
+        const restaurants = [
+            {
+                id: 1,
+                name: "The Gourmet Kitchen",
+                cuisine: "Italian, Mediterranean",
+                rating: 4.8,
+                reviews: 250,
+                deliveryTime: "30-40 min",
+                deliveryFee: 99,
+                image: "https://picsum.photos/seed/restaurant1/400/300.jpg",
+                categories: ["pasta", "pizza"],
+                promo: "20% off on first order",
+                menu: {
+                    "Appetizers": [
+                        {
+                            id: 101,
+                            name: "Bruschetta",
+                            description: "Toasted bread with tomatoes, garlic, olive oil, and basil",
+                            price: 199,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/bruschetta/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Extra Toppings",
+                                    options: [
+                                        { name: "Extra Cheese", price: 50 },
+                                        { name: "Extra Tomatoes", price: 30 },
+                                        { name: "Extra Basil", price: 20 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 102,
+                            name: "Caesar Salad",
+                            description: "Romaine lettuce, croutons, parmesan cheese, and Caesar dressing",
+                            price: 249,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/caesar/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Add Protein",
+                                    options: [
+                                        { name: "Grilled Chicken", price: 120 },
+                                        { name: "Shrimp", price: 150 },
+                                        { name: "Smoked Salmon", price: 180 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 103,
+                            name: "Antipasto Platter",
+                            description: "Selection of cured meats, cheeses, olives, and marinated vegetables",
+                            price: 399,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/antipasto/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Pizza": [
+                        {
+                            id: 104,
+                            name: "Margherita Pizza",
+                            description: "Fresh mozzarella, tomato sauce, and basil",
+                            price: 399,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/margherita/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Crust",
+                                    options: [
+                                        { name: "Thin Crust", price: 0 },
+                                        { name: "Thick Crust", price: 30 },
+                                        { name: "Cheese Burst", price: 60 }
+                                    ]
+                                },
+                                {
+                                    name: "Extra Toppings",
+                                    options: [
+                                        { name: "Extra Cheese", price: 80 },
+                                        { name: "Olives", price: 50 },
+                                        { name: "Mushrooms", price: 50 },
+                                        { name: "Jalapeños", price: 40 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 105,
+                            name: "Pepperoni Pizza",
+                            description: "Pepperoni, mozzarella, and tomato sauce",
+                            price: 449,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/pepperoni/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Crust",
+                                    options: [
+                                        { name: "Thin Crust", price: 0 },
+                                        { name: "Thick Crust", price: 30 },
+                                        { name: "Cheese Burst", price: 60 }
+                                    ]
+                                },
+                                {
+                                    name: "Extra Toppings",
+                                    options: [
+                                        { name: "Extra Pepperoni", price: 80 },
+                                        { name: "Extra Cheese", price: 80 },
+                                        { name: "Mushrooms", price: 50 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 106,
+                            name: "Vegetarian Pizza",
+                            description: "Bell peppers, mushrooms, onions, olives, and tomatoes",
+                            price: 429,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/veggie/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Crust",
+                                    options: [
+                                        { name: "Thin Crust", price: 0 },
+                                        { name: "Thick Crust", price: 30 },
+                                        { name: "Cheese Burst", price: 60 }
+                                    ]
+                                },
+                                {
+                                    name: "Extra Toppings",
+                                    options: [
+                                        { name: "Extra Cheese", price: 80 },
+                                        { name: "Corn", price: 40 },
+                                        { name: "Pineapple", price: 40 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 107,
+                            name: "BBQ Chicken Pizza",
+                            description: "BBQ chicken, red onions, cilantro, and mozzarella",
+                            price: 499,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/bbqchicken/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Pasta": [
+                        {
+                            id: 108,
+                            name: "Spaghetti Carbonara",
+                            description: "Pasta with eggs, cheese, pancetta, and pepper",
+                            price: 449,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/carbonara/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Add Protein",
+                                    options: [
+                                        { name: "Extra Pancetta", price: 80 },
+                                        { name: "Grilled Chicken", price: 100 }
+                                    ]
+                                },
+                                {
+                                    name: "Spice Level",
+                                    options: [
+                                        { name: "Mild", price: 0 },
+                                        { name: "Medium", price: 20 },
+                                        { name: "Spicy", price: 40 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 109,
+                            name: "Fettuccine Alfredo",
+                            description: "Pasta with butter, cream, and parmesan cheese",
+                            price: 429,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/alfredo/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Add Protein",
+                                    options: [
+                                        { name: "Grilled Chicken", price: 120 },
+                                        { name: "Shrimp", price: 150 }
+                                    ]
+                                },
+                                {
+                                    name: "Add Vegetables",
+                                    options: [
+                                        { name: "Broccoli", price: 40 },
+                                        { name: "Mushrooms", price: 40 },
+                                        { name: "Spinach", price: 30 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 110,
+                            name: "Penne Arrabbiata",
+                            description: "Pasta with spicy tomato sauce, garlic, and red chili",
+                            price: 399,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/arrabbiata/300/300.jpg",
+                            tags: ["veg", "spicy"],
+                            customizations: [
+                                {
+                                    name: "Spice Level",
+                                    options: [
+                                        { name: "Mild", price: 0 },
+                                        { name: "Medium", price: 20 },
+                                        { name: "Spicy", price: 40 },
+                                        { name: "Extra Spicy", price: 60 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 111,
+                            name: "Lasagna",
+                            description: "Layers of pasta with meat sauce, cheese, and béchamel",
+                            price: 479,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/lasagna/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Desserts": [
+                        {
+                            id: 112,
+                            name: "Tiramisu",
+                            description: "Coffee-soaked ladyfingers, mascarpone cream, and cocoa",
+                            price: 249,
+                            rating: 4.9,
+                            image: "https://picsum.photos/seed/tiramisu/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 113,
+                            name: "Panna Cotta",
+                            description: "Sweetened cream set with gelatin and topped with berries",
+                            price: 199,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/pannacotta/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 114,
+                            name: "Gelato Selection",
+                            description: "Choice of three gelato flavors",
+                            price: 229,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/gelato/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Beverages": [
+                        {
+                            id: 115,
+                            name: "Italian Soda",
+                            description: "Refreshing soda with Italian flavors",
+                            price: 129,
+                            rating: 4.3,
+                            image: "https://picsum.photos/seed/italiansoda/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 116,
+                            name: "Wine Selection",
+                            description: "Choice of red or white wine",
+                            price: 399,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/wine/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 2,
+                name: "Spice Garden",
+                cuisine: "Indian, Asian",
+                rating: 4.5,
+                reviews: 180,
+                deliveryTime: "25-35 min",
+                deliveryFee: 79,
+                image: "https://picsum.photos/seed/restaurant2/400/300.jpg",
+                categories: ["indian", "chinese"],
+                promo: "Free delivery on orders above ₹500",
+                menu: {
+                    "Appetizers": [
+                        {
+                            id: 201,
+                            name: "Samosas",
+                            description: "Crispy pastry filled with spiced potatoes and peas",
+                            price: 149,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/samosas/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 202,
+                            name: "Spring Rolls",
+                            description: "Crispy rolls filled with vegetables and served with sweet chili sauce",
+                            price: 179,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/springrolls/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 203,
+                            name: "Chicken Momos",
+                            description: "Steamed dumplings filled with spiced chicken and vegetables",
+                            price: 199,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/momos/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Main Course": [
+                        {
+                            id: 204,
+                            name: "Butter Chicken",
+                            description: "Tender chicken in a creamy tomato-based curry",
+                            price: 449,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/butterchicken/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Spice Level",
+                                    options: [
+                                        { name: "Mild", price: 0 },
+                                        { name: "Medium", price: 20 },
+                                        { name: "Spicy", price: 40 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 205,
+                            name: "Palak Paneer",
+                            description: "Cottage cheese cubes in a creamy spinach curry",
+                            price: 399,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/palakpaneer/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Spice Level",
+                                    options: [
+                                        { name: "Mild", price: 0 },
+                                        { name: "Medium", price: 20 },
+                                        { name: "Spicy", price: 40 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 206,
+                            name: "Biryani",
+                            description: "Fragrant rice dish with spiced meat or vegetables",
+                            price: 429,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/biryani/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Type",
+                                    options: [
+                                        { name: "Chicken Biryani", price: 0 },
+                                        { name: "Mutton Biryani", price: 80 },
+                                        { name: "Vegetable Biryani", price: -30 }
+                                    ]
+                                },
+                                {
+                                    name: "Spice Level",
+                                    options: [
+                                        { name: "Mild", price: 0 },
+                                        { name: "Medium", price: 20 },
+                                        { name: "Spicy", price: 40 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 207,
+                            name: "Kadai Paneer",
+                            description: "Cottage cheese and bell peppers in a spicy gravy",
+                            price: 379,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/kadaipaneer/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 208,
+                            name: "Chilli Chicken",
+                            description: "Spicy chicken stir-fried with bell peppers and onions",
+                            price: 419,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/chillichicken/300/300.jpg",
+                            tags: ["non-veg", "spicy"]
+                        }
+                    ],
+                    "Breads": [
+                        {
+                            id: 209,
+                            name: "Naan",
+                            description: "Soft leavened flatbread",
+                            price: 49,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/naan/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Variety",
+                                    options: [
+                                        { name: "Plain Naan", price: 0 },
+                                        { name: "Butter Naan", price: 20 },
+                                        { name: "Garlic Naan", price: 30 },
+                                        { name: "Cheese Naan", price: 50 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 210,
+                            name: "Roti",
+                            description: "Whole wheat unleavened flatbread",
+                            price: 39,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/roti/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 211,
+                            name: "Paratha",
+                            description: "Flaky layered flatbread",
+                            price: 59,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/paratha/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Variety",
+                                    options: [
+                                        { name: "Plain Paratha", price: 0 },
+                                        { name: "Aloo Paratha", price: 30 },
+                                        { name: "Gobi Paratha", price: 30 },
+                                        { name: "Paneer Paratha", price: 50 }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Rice": [
+                        {
+                            id: 212,
+                            name: "Steamed Rice",
+                            description: "Basmati rice steamed to perfection",
+                            price: 99,
+                            rating: 4.3,
+                            image: "https://picsum.photos/seed/steamedrice/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 213,
+                            name: "Jeera Rice",
+                            description: "Basmati rice flavored with cumin seeds",
+                            price: 119,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/jeerarice/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Desserts": [
+                        {
+                            id: 214,
+                            name: "Gulab Jamun",
+                            description: "Milk solids dumplings soaked in rose-flavored sugar syrup",
+                            price: 149,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/gulabjamun/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 215,
+                            name: "Rasmalai",
+                            description: "Soft cottage cheese patties in sweetened milk",
+                            price: 179,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/rasmalai/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 216,
+                            name: "Kheer",
+                            description: "Rice pudding flavored with cardamom and nuts",
+                            price: 129,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/kheer/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 3,
+                name: "Burger Palace",
+                cuisine: "American, Fast Food",
+                rating: 4.6,
+                reviews: 320,
+                deliveryTime: "20-30 min",
+                deliveryFee: 89,
+                image: "https://picsum.photos/seed/restaurant3/400/300.jpg",
+                categories: ["burger"],
+                promo: "Buy one get one free",
+                menu: {
+                    "Burgers": [
+                        {
+                            id: 301,
+                            name: "Classic Burger",
+                            description: "Beef patty with lettuce, tomato, onion, and special sauce",
+                            price: 249,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/classicburger/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Add-ons",
+                                    options: [
+                                        { name: "Extra Cheese", price: 40 },
+                                        { name: "Bacon", price: 60 },
+                                        { name: "Avocado", price: 50 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 302,
+                            name: "Cheese Burger",
+                            description: "Beef patty with cheese, lettuce, tomato, and pickles",
+                            price: 279,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/cheeseburger/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Add-ons",
+                                    options: [
+                                        { name: "Extra Cheese", price: 40 },
+                                        { name: "Bacon", price: 60 },
+                                        { name: "Jalapeños", price: 30 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 303,
+                            name: "Bacon Burger",
+                            description: "Beef patty with bacon, cheese, lettuce, and tomato",
+                            price: 329,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/baconburger/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 304,
+                            name: "Veggie Burger",
+                            description: "Plant-based patty with lettuce, tomato, and special sauce",
+                            price: 249,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/veggieburger/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Add-ons",
+                                    options: [
+                                        { name: "Extra Cheese", price: 40 },
+                                        { name: "Avocado", price: 50 },
+                                        { name: "Mushrooms", price: 30 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 305,
+                            name: "Chicken Burger",
+                            description: "Crispy chicken patty with lettuce, tomato, and mayo",
+                            price: 269,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/chickenburger/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Sides": [
+                        {
+                            id: 306,
+                            name: "French Fries",
+                            description: "Crispy golden potato fries",
+                            price: 129,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/fries/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Size",
+                                    options: [
+                                        { name: "Regular", price: 0 },
+                                        { name: "Large", price: 50 }
+                                    ]
+                                },
+                                {
+                                    name: "Add-ons",
+                                    options: [
+                                        { name: "Cheese", price: 40 },
+                                        { name: "Bacon Bits", price: 50 },
+                                        { name: "Jalapeños", price: 30 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 307,
+                            name: "Onion Rings",
+                            description: "Crispy battered onion rings",
+                            price: 149,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/onionrings/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 308,
+                            name: "Chicken Wings",
+                            description: "Crispy chicken wings with your choice of sauce",
+                            price: 249,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/wings/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Sauce",
+                                    options: [
+                                        { name: "BBQ", price: 0 },
+                                        { name: "Buffalo", price: 0 },
+                                        { name: "Honey Garlic", price: 0 },
+                                        { name: "Teriyaki", price: 0 }
+                                    ]
+                                },
+                                {
+                                    name: "Spice Level",
+                                    options: [
+                                        { name: "Mild", price: 0 },
+                                        { name: "Medium", price: 20 },
+                                        { name: "Hot", price: 40 }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Drinks": [
+                        {
+                            id: 309,
+                            name: "Soda",
+                            description: "Choice of cola, lemon-lime, or orange",
+                            price: 79,
+                            rating: 4.0,
+                            image: "https://picsum.photos/seed/soda/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Flavor",
+                                    options: [
+                                        { name: "Cola", price: 0 },
+                                        { name: "Lemon-Lime", price: 0 },
+                                        { name: "Orange", price: 0 }
+                                    ]
+                                },
+                                {
+                                    name: "Size",
+                                    options: [
+                                        { name: "Regular", price: 0 },
+                                        { name: "Large", price: 30 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 310,
+                            name: "Milkshake",
+                            description: "Creamy shake in chocolate, vanilla, or strawberry",
+                            price: 179,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/milkshake/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Flavor",
+                                    options: [
+                                        { name: "Chocolate", price: 0 },
+                                        { name: "Vanilla", price: 0 },
+                                        { name: "Strawberry", price: 0 },
+                                        { name: "Oreo", price: 40 }
+                                    ]
+                                },
+                                {
+                                    name: "Add-ons",
+                                    options: [
+                                        { name: "Extra Scoop", price: 50 },
+                                        { name: "Whipped Cream", price: 20 },
+                                        { name: "Chocolate Sauce", price: 20 }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 4,
+                name: "Sushi Master",
+                cuisine: "Japanese, Sushi",
+                rating: 4.9,
+                reviews: 150,
+                deliveryTime: "35-45 min",
+                deliveryFee: 119,
+                image: "https://picsum.photos/seed/restaurant4/400/300.jpg",
+                categories: ["sushi"],
+                promo: "10% off on all sushi",
+                menu: {
+                    "Sushi Rolls": [
+                        {
+                            id: 401,
+                            name: "California Roll",
+                            description: "Crab, avocado, and cucumber",
+                            price: 449,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/california/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 402,
+                            name: "Spicy Tuna Roll",
+                            description: "Spicy tuna, cucumber, and avocado",
+                            price: 499,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/spicytuna/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 403,
+                            name: "Dragon Roll",
+                            description: "Eel, cucumber, and avocado with eel sauce",
+                            price: 549,
+                            rating: 4.9,
+                            image: "https://picsum.photos/seed/dragon/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 404,
+                            name: "Vegetable Roll",
+                            description: "Avocado, cucumber, and carrot",
+                            price: 399,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/veggieroll/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Sashimi": [
+                        {
+                            id: 405,
+                            name: "Salmon Sashimi",
+                            description: "Fresh salmon slices",
+                            price: 549,
+                            rating: 4.9,
+                            image: "https://picsum.photos/seed/salmon/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 406,
+                            name: "Tuna Sashimi",
+                            description: "Fresh tuna slices",
+                            price: 599,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/tuna/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Appetizers": [
+                        {
+                            id: 407,
+                            name: "Edamame",
+                            description: "Steamed soybeans with sea salt",
+                            price: 149,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/edamame/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 408,
+                            name: "Gyoza",
+                            description: "Pan-fried dumplings filled with pork and vegetables",
+                            price: 249,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/gyoza/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 409,
+                            name: "Tempura",
+                            description: "Lightly battered and fried vegetables and shrimp",
+                            price: 299,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/tempura/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 5,
+                name: "Chennai Express",
+                cuisine: "South Indian",
+                rating: 4.6,
+                reviews: 320,
+                deliveryTime: "25-35 min",
+                deliveryFee: 69,
+                image: "https://picsum.photos/seed/chennai/400/300.jpg",
+                categories: ["south-indian"],
+                promo: "Free sambar with every dosa",
+                menu: {
+                    "Dosa": [
+                        {
+                            id: 501,
+                            name: "Masala Dosa",
+                            description: "Crispy rice crepe filled with spiced potato filling",
+                            price: 149,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/masaladosa/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 502,
+                            name: "Plain Dosa",
+                            description: "Crispy plain rice crepe served with chutney and sambar",
+                            price: 99,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/plaindosa/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 503,
+                            name: "Onion Dosa",
+                            description: "Crispy rice crepe with finely chopped onions",
+                            price: 129,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/oniondosa/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 504,
+                            name: "Rava Dosa",
+                            description: "Crispy crepe made with semolina",
+                            price: 139,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/ravadosa/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Idli": [
+                        {
+                            id: 505,
+                            name: "Plain Idli",
+                            description: "Steamed rice cakes served with chutney and sambar",
+                            price: 89,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/plainidli/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 506,
+                            name: "Masala Idli",
+                            description: "Steamed rice cakes tossed with spices and vegetables",
+                            price: 119,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/masalaidli/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Utappam": [
+                        {
+                            id: 507,
+                            name: "Onion Utappam",
+                            description: "Thick pancake with onions and chilies",
+                            price: 139,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/onionutappam/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 508,
+                            name: "Tomato Utappam",
+                            description: "Thick pancake with tomatoes and herbs",
+                            price: 139,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/tomatoutappam/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Beverages": [
+                        {
+                            id: 509,
+                            name: "Filter Coffee",
+                            description: "Traditional South Indian filter coffee",
+                            price: 59,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/filtercoffee/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 510,
+                            name: "Masala Tea",
+                            description: "Spiced Indian tea with milk and sugar",
+                            price: 49,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/masalatea/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 6,
+                name: "Punjab Di Rasoi",
+                cuisine: "North Indian, Punjabi",
+                rating: 4.7,
+                reviews: 450,
+                deliveryTime: "30-40 min",
+                deliveryFee: 89,
+                image: "https://picsum.photos/seed/punjab/400/300.jpg",
+                categories: ["indian"],
+                promo: "Free lassi with every thali",
+                menu: {
+                    "Starters": [
+                        {
+                            id: 601,
+                            name: "Paneer Tikka",
+                            description: "Cottage cheese cubes marinated in spices and grilled",
+                            price: 299,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/paneertikka/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 602,
+                            name: "Chicken Tikka",
+                            description: "Chicken pieces marinated in spices and grilled",
+                            price: 349,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/chickentikka/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 603,
+                            name: "Aloo Tikki",
+                            description: "Spiced potato patties shallow fried",
+                            price: 179,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/alootikki/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Main Course": [
+                        {
+                            id: 604,
+                            name: "Dal Makhani",
+                            description: "Creamy black lentils cooked with butter and cream",
+                            price: 299,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/dalmakhani/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 605,
+                            name: "Shahi Paneer",
+                            description: "Cottage cheese in a rich, creamy gravy",
+                            price: 329,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/shahipaneer/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 606,
+                            name: "Butter Chicken",
+                            description: "Tender chicken in a creamy tomato-based curry",
+                            price: 399,
+                            rating: 4.9,
+                            image: "https://picsum.photos/seed/butterchickenpunjabi/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 607,
+                            name: "Rajma",
+                            description: "Red kidney beans in a spicy gravy",
+                            price: 249,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/rajma/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Breads": [
+                        {
+                            id: 608,
+                            name: "Butter Naan",
+                            description: "Soft leavened flatbread brushed with butter",
+                            price: 59,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/butternaan/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 609,
+                            name: "Lachha Paratha",
+                            description: "Multi-layered flaky flatbread",
+                            price: 69,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/lachhaparatha/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 610,
+                            name: "Missi Roti",
+                            description: "Flatbread made with gram flour and spices",
+                            price: 49,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/missiroti/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Rice": [
+                        {
+                            id: 611,
+                            name: "Jeera Rice",
+                            description: "Basmati rice flavored with cumin seeds",
+                            price: 129,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/jeeraricepunjabi/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 612,
+                            name: "Pulao",
+                            description: "Fragrant rice cooked with vegetables and spices",
+                            price: 179,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/pulao/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Desserts": [
+                        {
+                            id: 613,
+                            name: "Kheer",
+                            description: "Rice pudding flavored with cardamom and nuts",
+                            price: 149,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/kheerpunjabi/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 614,
+                            name: "Gajar Ka Halwa",
+                            description: "Carrot pudding cooked with milk and sugar",
+                            price: 179,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/gajarhalwa/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Beverages": [
+                        {
+                            id: 615,
+                            name: "Lassi",
+                            description: "Sweet yogurt drink flavored with cardamom",
+                            price: 79,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/lassi/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Flavor",
+                                    options: [
+                                        { name: "Sweet Lassi", price: 0 },
+                                        { name: "Mango Lassi", price: 30 },
+                                        { name: "Salted Lassi", price: 0 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 616,
+                            name: "Chaas",
+                            description: "Salty buttermilk with spices",
+                            price: 59,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/chaas/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 7,
+                name: "Biryani House",
+                cuisine: "Hyderabadi, Mughlai",
+                rating: 4.8,
+                reviews: 520,
+                deliveryTime: "35-45 min",
+                deliveryFee: 99,
+                image: "https://picsum.photos/seed/biryani/400/300.jpg",
+                categories: ["indian"],
+                promo: "Free raita with every biryani",
+                menu: {
+                    "Biryani": [
+                        {
+                            id: 701,
+                            name: "Hyderabadi Chicken Biryani",
+                            description: "Aromatic basmati rice cooked with chicken and special spices",
+                            price: 399,
+                            rating: 4.9,
+                            image: "https://picsum.photos/seed/hyderabadi/300/300.jpg",
+                            tags: ["non-veg"],
+                            customizations: [
+                                {
+                                    name: "Spice Level",
+                                    options: [
+                                        { name: "Mild", price: 0 },
+                                        { name: "Medium", price: 20 },
+                                        { name: "Spicy", price: 40 }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 702,
+                            name: "Mutton Biryani",
+                            description: "Tender mutton pieces cooked with aromatic basmati rice",
+                            price: 449,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/muttonbiryani/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 703,
+                            name: "Vegetable Biryani",
+                            description: "Mixed vegetables cooked with aromatic basmati rice",
+                            price: 329,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/vegbiryani/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 704,
+                            name: "Egg Biryani",
+                            description: "Hard-boiled eggs cooked with aromatic basmati rice",
+                            price: 299,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/eggbiryani/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Starters": [
+                        {
+                            id: 705,
+                            name: "Chicken 65",
+                            description: "Spicy deep-fried chicken pieces",
+                            price: 249,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/chicken65/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 706,
+                            name: "Hara Bhara Kebab",
+                            description: "Spiced spinach and potato patties",
+                            price: 199,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/harabhara/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Main Course": [
+                        {
+                            id: 707,
+                            name: "Chicken Curry",
+                            description: "Tender chicken pieces in a spicy gravy",
+                            price: 299,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/chickencurry/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 708,
+                            name: "Mirchi Ka Salan",
+                            description: "Hyderabadi chili curry",
+                            price: 249,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/mirchisalan/300/300.jpg",
+                            tags: ["veg", "spicy"]
+                        }
+                    ],
+                    "Desserts": [
+                        {
+                            id: 709,
+                            name: "Double Ka Meetha",
+                            description: "Hyderabadi bread pudding",
+                            price: 179,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/doublekameetha/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 710,
+                            name: "Qubani Ka Meetha",
+                            description: "Apricot dessert served with cream",
+                            price: 199,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/qubani/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 8,
+                name: "Kolkata Kathi Rolls",
+                cuisine: "Bengali, Street Food",
+                rating: 4.5,
+                reviews: 380,
+                deliveryTime: "15-25 min",
+                deliveryFee: 49,
+                image: "https://picsum.photos/seed/kolkata/400/300.jpg",
+                categories: ["street-food"],
+                promo: "Buy 2 get 1 free on kathi rolls",
+                menu: {
+                    "Kathi Rolls": [
+                        {
+                            id: 801,
+                            name: "Chicken Kathi Roll",
+                            description: "Grilled chicken with onions and chilies wrapped in paratha",
+                            price: 129,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/chickenkathi/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 802,
+                            name: "Egg Kathi Roll",
+                            description: "Scrambled egg with onions and chilies wrapped in paratha",
+                            price: 99,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/eggkathi/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 803,
+                            name: "Paneer Kathi Roll",
+                            description: "Grilled paneer with onions and chilies wrapped in paratha",
+                            price: 119,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/paneerkathi/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 804,
+                            name: "Mixed Veg Kathi Roll",
+                            description: "Mixed vegetables with onions and chilies wrapped in paratha",
+                            price: 109,
+                            rating: 4.3,
+                            image: "https://picsum.photos/seed/mixedvegkathi/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Snacks": [
+                        {
+                            id: 805,
+                            name: "Puchka",
+                            description: "Hollow crispy spheres filled with spicy water",
+                            price: 79,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/puchka/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 806,
+                            name: "Jhal Muri",
+                            description: "Puffed rice with vegetables and spices",
+                            price: 89,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/jhalmuri/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Sweets": [
+                        {
+                            id: 807,
+                            name: "Rasgulla",
+                            description: "Soft spongy balls soaked in sugar syrup",
+                            price: 99,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/rasgulla/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 808,
+                            name: "Sandesh",
+                            description: "Bengali sweet made with cottage cheese",
+                            price: 119,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/sandesh/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 9,
+                name: "Mumbai Street Food",
+                cuisine: "Maharashtrian, Street Food",
+                rating: 4.6,
+                reviews: 420,
+                deliveryTime: "20-30 min",
+                deliveryFee: 59,
+                image: "https://picsum.photos/seed/mumbai/400/300.jpg",
+                categories: ["street-food"],
+                promo: "Free pav with every vada pav",
+                menu: {
+                    "Street Food": [
+                        {
+                            id: 901,
+                            name: "Vada Pav",
+                            description: "Spicy potato fritter sandwiched in a bun",
+                            price: 49,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/vadapav/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 902,
+                            name: "Pav Bhaji",
+                            description: "Spicy vegetable curry served with buttered bread",
+                            price: 129,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/pavbhaji/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 903,
+                            name: "Bhel Puri",
+                            description: "Puffed rice with vegetables, tamarind, and mint chutney",
+                            price: 89,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/bhelpuri/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 904,
+                            name: "Sev Puri",
+                            description: "Crispy puris topped with vegetables, chutneys, and sev",
+                            price: 99,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/sevpuri/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Snacks": [
+                        {
+                            id: 905,
+                            name: "Dabeli",
+                            description: "Spicy potato mixture stuffed in a bun",
+                            price: 79,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/dabeli/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 906,
+                            name: "Misal Pav",
+                            description: "Spicy curry made with sprouted lentils served with bread",
+                            price: 119,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/misalpav/300/300.jpg",
+                            tags: ["veg", "spicy"]
+                        }
+                    ],
+                    "Beverages": [
+                        {
+                            id: 907,
+                            name: "Nimbu Pani",
+                            description: "Refreshing lemon drink with spices",
+                            price: 49,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/nimbu/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 908,
+                            name: "Mango Lassi",
+                            description: "Sweet yogurt drink with mango pulp",
+                            price: 79,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/mangolassi/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 10,
+                name: "Rajasthani Thali",
+                cuisine: "Rajasthani, Thali",
+                rating: 4.7,
+                reviews: 290,
+                deliveryTime: "30-40 min",
+                deliveryFee: 99,
+                image: "https://picsum.photos/seed/rajasthan/400/300.jpg",
+                categories: ["indian"],
+                promo: "Complimentary dal baati churma sweet",
+                menu: {
+                    "Thali": [
+                        {
+                            id: 1001,
+                            name: "Rajasthani Thali",
+                            description: "Complete meal with dal, baati, churma, gatte ki sabzi, and more",
+                            price: 349,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/rajasthanithali/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1002,
+                            name: "Dal Baati Thali",
+                            description: "Dal, baati, churma with accompaniments",
+                            price: 299,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/dalbaatithali/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Main Course": [
+                        {
+                            id: 1003,
+                            name: "Gatte Ki Sabzi",
+                            description: "Gram flour dumplings in a yogurt-based curry",
+                            price: 199,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/gatte/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1004,
+                            name: "Ker Sangri",
+                            description: "Traditional Rajasthani dish with desert beans and berries",
+                            price: 229,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/kersangri/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Breads": [
+                        {
+                            id: 1005,
+                            name: "Baati",
+                            description: "Hard wheat rolls traditionally cooked in charcoal",
+                            price: 99,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/baati/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1006,
+                            name: "Makki Ki Roti",
+                            description: "Corn flour flatbread",
+                            price: 79,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/makkikiroti/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Desserts": [
+                        {
+                            id: 1007,
+                            name: "Churma Ladoo",
+                            description: "Sweet made from wheat flour, ghee, and sugar",
+                            price: 149,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/churma/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1008,
+                            name: "Mawa Kachori",
+                            description: "Crispy pastry filled with sweetened milk solids",
+                            price: 179,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/mawakachori/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 11,
+                name: "Gujarati Farsan",
+                cuisine: "Gujarati, Vegetarian",
+                rating: 4.5,
+                reviews: 310,
+                deliveryTime: "25-35 min",
+                deliveryFee: 79,
+                image: "https://picsum.photos/seed/gujarat/400/300.jpg",
+                categories: ["indian"],
+                promo: "Free buttermilk with every thali",
+                menu: {
+                    "Farsan": [
+                        {
+                            id: 1101,
+                            name: "Dhokla",
+                            description: "Steamed savory cake made from fermented rice and chickpea batter",
+                            price: 149,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/dhokla/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1102,
+                            name: "Khandvi",
+                            description: "Savory rolls made from gram flour and yogurt",
+                            price: 179,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/khandvi/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1103,
+                            name: "Fafda",
+                            description: "Crispy gram flour snack",
+                            price: 129,
+                            rating: 4.4,
+                            image: "https://picsum.photos/seed/fafda/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Main Course": [
+                        {
+                            id: 1104,
+                            name: "Gujarati Thali",
+                            description: "Complete meal with dal, roti, shaak, farsan, and sweets",
+                            price: 299,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/gujaratithali/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1105,
+                            name: "Undhiyu",
+                            description: "Mixed vegetable curry traditionally cooked in earthen pots",
+                            price: 249,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/undhiyu/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Snacks": [
+                        {
+                            id: 1106,
+                            name: "Gathiya",
+                            description: "Crispy gram flour snack",
+                            price: 99,
+                            rating: 4.3,
+                            image: "https://picsum.photos/seed/gathiya/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1107,
+                            name: "Methi Thepla",
+                            description: "Fenugreek flatbread",
+                            price: 119,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/thepla/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Desserts": [
+                        {
+                            id: 1108,
+                            name: "Basundi",
+                            description: "Sweetened thickened milk with nuts",
+                            price: 179,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/basundi/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1109,
+                            name: "Shrikhand",
+                            description: "Sweetened strained yogurt flavored with saffron and cardamom",
+                            price: 149,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/shrikhand/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            },
+            {
+                id: 12,
+                name: "Tandoor Nights",
+                cuisine: "North Indian, Tandoor",
+                rating: 4.8,
+                reviews: 480,
+                deliveryTime: "35-45 min",
+                deliveryFee: 109,
+                image: "https://picsum.photos/seed/tandoor/400/300.jpg",
+                categories: ["indian"],
+                promo: "Free naan with every tandoori dish",
+                menu: {
+                    "Tandoori Starters": [
+                        {
+                            id: 1201,
+                            name: "Tandoori Chicken",
+                            description: "Chicken marinated in yogurt and spices, cooked in tandoor",
+                            price: 399,
+                            rating: 4.9,
+                            image: "https://picsum.photos/seed/tandoorichicken/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 1202,
+                            name: "Tandoori Paneer",
+                            description: "Paneer marinated in yogurt and spices, cooked in tandoor",
+                            price: 349,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/tandooripaneer/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1203,
+                            name: "Seekh Kebab",
+                            description: "Minced meat skewers flavored with spices",
+                            price: 379,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/seekhkebab/300/300.jpg",
+                            tags: ["non-veg"]
+                        }
+                    ],
+                    "Main Course": [
+                        {
+                            id: 1204,
+                            name: "Butter Chicken",
+                            description: "Tender chicken in a creamy tomato-based curry",
+                            price: 429,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/butterchickentandoor/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 1205,
+                            name: "Kadhai Chicken",
+                            description: "Chicken cooked with bell peppers and onions in a spicy gravy",
+                            price: 399,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/khadaichicken/300/300.jpg",
+                            tags: ["non-veg"]
+                        },
+                        {
+                            id: 1206,
+                            name: "Paneer Butter Masala",
+                            description: "Cottage cheese in a creamy tomato-based curry",
+                            price: 349,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/paneerbuttermasala/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ],
+                    "Breads": [
+                        {
+                            id: 1207,
+                            name: "Tandoori Roti",
+                            description: "Whole wheat flatbread cooked in tandoor",
+                            price: 39,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/tandooriroti/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1208,
+                            name: "Garlic Naan",
+                            description: "Leavened flatbread topped with garlic and butter",
+                            price: 69,
+                            rating: 4.8,
+                            image: "https://picsum.photos/seed/garlicnaan/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1209,
+                            name: "Stuffed Kulcha",
+                            description: "Leavened flatbread stuffed with potatoes or paneer",
+                            price: 89,
+                            rating: 4.7,
+                            image: "https://picsum.photos/seed/stuffedkulcha/300/300.jpg",
+                            tags: ["veg"],
+                            customizations: [
+                                {
+                                    name: "Stuffing",
+                                    options: [
+                                        { name: "Potato", price: 0 },
+                                        { name: "Paneer", price: 20 },
+                                        { name: "Mixed Veg", price: 20 }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "Rice": [
+                        {
+                            id: 1210,
+                            name: "Jeera Rice",
+                            description: "Basmati rice flavored with cumin seeds",
+                            price: 129,
+                            rating: 4.5,
+                            image: "https://picsum.photos/seed/jeeraricetandoor/300/300.jpg",
+                            tags: ["veg"]
+                        },
+                        {
+                            id: 1211,
+                            name: "Veg Pulao",
+                            description: "Fragrant rice cooked with vegetables and spices",
+                            price: 179,
+                            rating: 4.6,
+                            image: "https://picsum.photos/seed/vegpulao/300/300.jpg",
+                            tags: ["veg"]
+                        }
+                    ]
+                }
+            }
+        ];
+        
+        // Get restaurant ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const restaurantId = parseInt(urlParams.get('id'));
+        
+        // Find restaurant data
+        let restaurant = null;
+        if (restaurantId) {
+            restaurant = restaurants.find(r => r.id === restaurantId);
+        }
+        
+        // Initialize cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let discountAmount = 0;
+        let appliedPromoCode = '';
+        
+        // Customization modal state
+        let currentItemForCustomization = null;
+        let currentCustomizations = {};
+        
+        // Check if user is logged in
+        function checkUserLogin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (currentUser) {
+                // User is logged in, show user profile
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                
+                // Update user profile information
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                
+                // Set user avatar with first letter of name
+                const firstLetter = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('userAvatar').textContent = firstLetter;
+            } else {
+                // User is not logged in, show login/signup buttons
+                document.getElementById('authButtons').style.display = 'flex';
+                document.getElementById('userProfile').style.display = 'none';
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('currentUser');
+            showNotification('You have been logged out successfully', 'success');
+            checkUserLogin();
+            updateCartCount();
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+        
+        // Load restaurant data
+        function loadRestaurant() {
+            if (!restaurant) {
+                document.querySelector('.restaurant-content').innerHTML = '<p style="text-align: center; padding: 40px;">Restaurant not found</p>';
+                return;
+            }
+            
+            // Set restaurant header information
+            document.getElementById('restaurantImage').src = restaurant.image;
+            document.getElementById('restaurantName').textContent = restaurant.name;
+            document.getElementById('restaurantCuisine').textContent = restaurant.cuisine;
+            document.getElementById('restaurantRating').textContent = `${restaurant.rating} (${restaurant.reviews}+ reviews)`;
+            document.getElementById('restaurantDeliveryTime').textContent = restaurant.deliveryTime;
+            document.getElementById('restaurantDeliveryFee').textContent = `₹${restaurant.deliveryFee}`;
+            document.getElementById('restaurantPromo').textContent = restaurant.promo;
+            
+            // Load category tabs
+            const categoryTabs = document.getElementById('categoryTabs');
+            const categories = Object.keys(restaurant.menu);
+            
+            categories.forEach((category, index) => {
+                const tab = document.createElement('div');
+                tab.className = 'category-tab';
+                if (index === 0) tab.classList.add('active');
+                tab.textContent = category;
+                tab.onclick = () => loadCategory(category);
+                categoryTabs.appendChild(tab);
+            });
+            
+            // Load first category by default
+            if (categories.length > 0) {
+                loadCategory(categories[0]);
+            }
+        }
+        
+        // Load menu items for a specific category
+        function loadCategory(category) {
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent === category) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            // Load menu items
+            const menuItems = document.getElementById('menuItems');
+            menuItems.innerHTML = '';
+            
+            const items = restaurant.menu[category];
+            items.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                
+                // Check if item is already in cart
+                const cartItem = cart.find(i => i.id === item.id);
+                const quantity = cartItem ? cartItem.quantity : 0;
+                
+                // Create tags HTML
+                let tagsHTML = '';
+                if (item.tags) {
+                    tagsHTML = '<div class="menu-item-tags">';
+                    item.tags.forEach(tag => {
+                        tagsHTML += `<span class="menu-item-tag ${tag}">${tag === 'veg' ? '🟢' : tag === 'non-veg' ? '🔴' : tag === 'spicy' ? '🌶️' : tag}</span>`;
+                    });
+                    tagsHTML += '</div>';
+                }
+                
+                menuItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="menu-item-img">
+                    <div class="menu-item-info">
+                        <div class="menu-item-header">
+                            <div>
+                                <h3 class="menu-item-name">${item.name}</h3>
+                                ${tagsHTML}
+                                <p class="menu-item-description">${item.description}</p>
+                            </div>
+                            <div class="menu-item-price">₹${item.price}</div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <div class="menu-item-rating">
+                                <i class="fas fa-star"></i>
+                                <span>${item.rating}</span>
+                            </div>
+                            <div class="add-to-cart">
+                                ${quantity > 0 ? `
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)" ${quantity <= 1 ? 'disabled' : ''}>-</button>
+                                        <span class="quantity-value">${quantity}</span>
+                                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                    </div>
+                                ` : `
+                                    <button class="add-btn" onclick="openCustomizationModal(${item.id})">Add</button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                menuItems.appendChild(menuItem);
+            });
+        }
+        
+        // Open customization modal
+        function openCustomizationModal(itemId) {
+            const item = findMenuItemById(itemId);
+            if (!item) return;
+            
+            currentItemForCustomization = item;
+            currentCustomizations = {};
+            
+            // Set modal title
+            document.getElementById('modalTitle').textContent = `Customize Your ${item.name}`;
+            
+            // Load customization options
+            const customizationOptions = document.getElementById('customizationOptions');
+            customizationOptions.innerHTML = '';
+            
+            if (item.customizations && item.customizations.length > 0) {
+                item.customizations.forEach(customization => {
+                    const group = document.createElement('div');
+                    group.className = 'customization-group';
+                    
+                    const title = document.createElement('div');
+                    title.className = 'customization-group-title';
+                    title.textContent = customization.name;
+                    group.appendChild(title);
+                    
+                    customization.options.forEach(option => {
+                        const optionDiv = document.createElement('div');
+                        optionDiv.className = 'customization-option';
+                        
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'radio';
+                        checkbox.name = customization.name;
+                        checkbox.id = `${customization.name}_${option.name}`;
+                        checkbox.value = option.name;
+                        checkbox.checked = option.price === 0; // Select the default option
+                        checkbox.onchange = () => updateCustomizationPrice();
+                        
+                        const label = document.createElement('label');
+                        label.htmlFor = checkbox.id;
+                        label.className = 'customization-option-name';
+                        label.textContent = option.name;
+                        
+                        const price = document.createElement('div');
+                        price.className = 'customization-option-price';
+                        price.textContent = option.price > 0 ? `+₹${option.price}` : 'Included';
+                        
+                        optionDiv.appendChild(checkbox);
+                        optionDiv.appendChild(label);
+                        optionDiv.appendChild(price);
+                        group.appendChild(optionDiv);
+                    });
+                    
+                    customizationOptions.appendChild(group);
+                });
+            } else {
+                customizationOptions.innerHTML = '<p>No customizations available for this item.</p>';
+            }
+            
+            // Update modal total
+            updateCustomizationPrice();
+            
+            // Show modal
+            document.getElementById('customizationModal').classList.add('show');
+        }
+        
+        // Update customization price
+        function updateCustomizationPrice() {
+            if (!currentItemForCustomization) return;
+            
+            let totalPrice = currentItemForCustomization.price;
+            
+            if (currentItemForCustomization.customizations) {
+                currentItemForCustomization.customizations.forEach(customization => {
+                    const selectedOption = document.querySelector(`input[name="${customization.name}"]:checked`);
+                    if (selectedOption) {
+                        const option = customization.options.find(opt => opt.name === selectedOption.value);
+                        if (option) {
+                            totalPrice += option.price;
+                        }
+                    }
+                });
+            }
+            
+            document.getElementById('modalTotal').textContent = `₹${totalPrice}`;
+        }
+        
+        // Close customization modal
+        function closeCustomizationModal() {
+            document.getElementById('customizationModal').classList.remove('show');
+            currentItemForCustomization = null;
+            currentCustomizations = {};
+        }
+        
+        // Add item to cart from modal
+        function addToCartFromModal() {
+            if (!currentItemForCustomization) return;
+            
+            // Collect selected customizations
+            const selectedCustomizations = [];
+            
+            if (currentItemForCustomization.customizations) {
+                currentItemForCustomization.customizations.forEach(customization => {
+                    const selectedOption = document.querySelector(`input[name="${customization.name}"]:checked`);
+                    if (selectedOption) {
+                        const option = customization.options.find(opt => opt.name === selectedOption.value);
+                        if (option) {
+                            selectedCustomizations.push({
+                                name: customization.name,
+                                value: option.name,
+                                price: option.price
+                            });
+                        }
+                    }
+                });
+            }
+            
+            // Add to cart
+            addToCart(currentItemForCustomization.id, selectedCustomizations);
+            
+            // Close modal
+            closeCustomizationModal();
+        }
+        
+        // Add item to cart
+        function addToCart(itemId, customizations = []) {
+            const item = findMenuItemById(itemId);
+            if (!item) return;
+            
+            const existingItem = cart.find(i => i.id === itemId && JSON.stringify(i.customizations) === JSON.stringify(customizations));
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                // Calculate total price with customizations
+                let totalPrice = item.price;
+                customizations.forEach(customization => {
+                    totalPrice += customization.price;
+                });
+                
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: totalPrice,
+                    originalPrice: item.price,
+                    quantity: 1,
+                    restaurantId: restaurant.id,
+                    restaurantName: restaurant.name,
+                    customizations: customizations
+                });
+            }
+            
+            saveCart();
+            updateCartUI();
+            loadCategory(document.querySelector('.category-tab.active').textContent);
+            showNotification(`${item.name} added to cart`);
+        }
+        
+        // Update item quantity
+        function updateQuantity(itemId, change) {
+            const item = cart.find(i => i.id === itemId);
+            if (!item) return;
+            
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== itemId);
+            }
+            
+            saveCart();
+            updateCartUI();
+            loadCategory(document.querySelector('.category-tab.active').textContent);
+        }
+        
+        // Remove item from cart
+        function removeFromCart(itemId) {
+            cart = cart.filter(i => i.id !== itemId);
+            saveCart();
+            updateCartUI();
+            loadCategory(document.querySelector('.category-tab.active').textContent);
+        }
+        
+        // Apply promo code
+        function applyPromoCode() {
+            const promoInput = document.getElementById('promoInput');
+            const promoMessage = document.getElementById('promoMessage');
+            const promoCode = promoInput.value.trim().toUpperCase();
+            
+            if (!promoCode) {
+                promoMessage.textContent = 'Please enter a promo code';
+                promoMessage.className = 'promo-message error';
+                return;
+            }
+            
+            // Demo promo codes
+            const promoCodes = {
+                'MAHALA10': { discount: 0.1, description: '10% off' },
+                'MAHALA20': { discount: 0.2, description: '20% off' },
+                'FREESHIP': { discount: restaurant.deliveryFee, description: 'Free shipping', isFixed: true },
+                'FIRSTORDER': { discount: 0.15, description: '15% off' },
+                'RESTAURANT10': { discount: 0.1, description: '10% off' },
+                'SAVE20': { discount: 0.2, description: '20% off' }
+            };
+            
+            if (promoCodes[promoCode]) {
+                const promo = promoCodes[promoCode];
+                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                
+                if (promo.isFixed) {
+                    discountAmount = promo.discount;
+                } else {
+                    discountAmount = subtotal * promo.discount;
+                }
+                
+                appliedPromoCode = promoCode;
+                
+                promoMessage.textContent = `${promo.description} applied!`;
+                promoMessage.className = 'promo-message success';
+                
+                updateCartSummary();
+            } else {
+                promoMessage.textContent = 'Invalid promo code';
+                promoMessage.className = 'promo-message error';
+            }
+        }
+        
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+        
+        // Update cart count in navbar
+        function updateCartCount() {
+            let count = 0;
+            cart.forEach(item => {
+                count += item.quantity;
+            });
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        // Update cart UI
+        function updateCartUI() {
+            const cartItems = document.getElementById('cartItems');
+            const cartSummary = document.getElementById('cartSummary');
+            const cartItemsCount = document.getElementById('cartItemsCount');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <p>Your cart is empty</p>
+                        <p>Add items from the menu to get started</p>
+                    </div>
+                `;
+                cartSummary.style.display = 'none';
+                cartItemsCount.textContent = '0 items';
+                return;
+            }
+            
+            // Calculate total items
+            let totalItems = 0;
+            cart.forEach(item => {
+                totalItems += item.quantity;
+            });
+            cartItemsCount.textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''}`;
+            
+            // Render cart items
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                
+                // Create customization text if available
+                let customizationText = '';
+                if (item.customizations && item.customizations.length > 0) {
+                    customizationText = item.customizations.map(c => `${c.value}`).join(', ');
+                }
+                
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        ${customizationText ? `<div style="font-size: 0.8rem; color: #666;">${customizationText}</div>` : ''}
+                        <div class="cart-item-price">₹${item.price}</div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <div class="cart-item-quantity-control">
+                            <button class="cart-item-quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span class="cart-item-quantity-value">${item.quantity}</span>
+                            <button class="cart-item-quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">Remove</button>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            updateCartSummary();
+        }
+        
+        // Update cart summary
+        function updateCartSummary() {
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const deliveryFee = restaurant ? restaurant.deliveryFee : 0;
+            const taxes = subtotal * 0.05; // 5% tax
+            const total = subtotal + deliveryFee + taxes - discountAmount;
+            
+            // Update summary
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('deliveryFee').textContent = `₹${deliveryFee.toFixed(2)}`;
+            document.getElementById('taxes').textContent = `₹${taxes.toFixed(2)}`;
+            document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+            
+            // Show cart summary
+            document.getElementById('cartSummary').style.display = 'block';
+        }
+        
+        // Find menu item by ID
+        function findMenuItemById(itemId) {
+            if (!restaurant) return null;
+            
+            for (const category in restaurant.menu) {
+                const item = restaurant.menu[category].find(i => i.id === itemId);
+                if (item) return item;
+            }
+            
+            return null;
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notificationMessage');
+            
+            notificationMessage.textContent = message;
+            notification.className = `notification show ${type}`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Hide notification
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('show');
+        }
+        
+        // Initialize
+        checkUserLogin();
+        loadRestaurant();
+        updateCartUI();
+        updateCartCount();//1473
+    </script>
+</body>
+</html>

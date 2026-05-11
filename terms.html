@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Mahala Company</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .icon{
+            width: 200px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo{
+            color: #ff7200;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+        }
+        
+        .menu{
+            display: flex;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu ul li{
+            margin: 0 15px;
+        }
+        
+        .menu ul li a{
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu ul li a:hover{
+            color: #ff7200;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff7200;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-login:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-signup {
+            background-color: #ff7200;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: #e56500;
+        }
+        
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff7200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .user-email {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .btn-logout {
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+        
+        .btn-logout:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-icon i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff7200;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .page-header {
+            background: linear-gradient(to right, #ff7200, #ff9500);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .terms-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 5%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .terms-content {
+            padding: 40px;
+        }
+        
+        .terms-section {
+            margin-bottom: 40px;
+        }
+        
+        .terms-section h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .terms-section p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .terms-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .terms-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .terms-section a {
+            color: #ff7200;
+            text-decoration: none;
+        }
+        
+        .terms-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .last-updated {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+            z-index: 1000;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 3%;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu ul li {
+                margin: 10px 0;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .terms-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="icon">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/514/650/small_2x/letter-s-logo-design-for-business-and-company-identity-with-luxury-concept-free-vector.jpg" alt="Logo" class="logo" style="width: 120px; border-radius: 50px;padding: 20px;"/>
+            <a href="index.html" class="logo">Mahala Company</a>
+        </div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="auth-buttons" id="authButtons">
+            <button class="btn btn-login" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn btn-signup" onclick="window.location.href='register.html'">Sign Up</button>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+        <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <div class="user-info">
+                <span class="user-name" id="userName">User Name</span>
+                <span class="user-email" id="userEmail">user@example.com</span>
+            </div>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <div class="page-header">
+        <h1>Terms of Service</h1>
+        <p>Please read these terms carefully before using our services</p>
+    </div>
+    
+    <div class="terms-container">
+        <div class="terms-content">
+            <div class="terms-section">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing and using Mahala Company's website and services, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+                <p>These Terms of Service constitute a legally binding agreement between you and Mahala Company. By using our services, you acknowledge that you have read, understood, and agree to these terms.</p>
+                <p>These Terms of Service were last updated on January 1, 2025.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>2. Eligibility</h2>
+                <p>You must be at least 18 years old to use our services. By using our services, you represent that you have the legal capacity to enter into this agreement.</p>
+                <p>If you are under 18, you may only use our services with the consent of a parent or legal guardian.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>3. Account Registration</h2>
+                <p>To use certain features of our Service, you must create an account and provide accurate information.</p>
+                <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>4. Account Security</h2>
+                <p>You are responsible for maintaining the security of your account and password.</p>
+                <p>You must notify us immediately if you suspect any unauthorized use of your account.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>5. Account Termination</h2>
+                <p>You may terminate your account at any time by contacting our customer support team or using the account deletion option in your profile settings.</p>
+                <p>Upon termination, your personal information will be deleted from our active systems within 30 days.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>6. Account Suspension</h2>
+                <p>We reserve the right to suspend or terminate accounts that violate these Terms of Service.</p>
+                <p>Suspended accounts may be reactivated upon request after a review.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>7. Business Accounts</h2>
+                <p>Business accounts may have different terms and conditions that apply in addition to these Terms of Service.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>8. Accuracy of Information</h2>
+                <p>You agree that all information you provide is accurate, complete, and current.</p>
+                <p>You are responsible for keeping your information up-to-date and accurate.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>9. Prohibited Activities</h2>
+                <p>You agree not to:</p>
+                
+                    <p>Use the Service for any illegal or unauthorized purpose</p>
+                    <p>Upload or share content that is illegal, harmful, or violates any applicable laws</p>
+                    <p>Impersonate someone else or misrepresent yourself as someone else</p>
+                    <p>Interfere with other users in a harassing or abusive manner</p>
+                    <p>Attempt to gain unauthorized access to our systems</p>
+                    <p>Upload or transmit viruses or malicious code</p>
+                   
+                </div>
+                
+                <div class="terms-section">
+                    <h2>10. Indemnification</h2>
+                    <p>Mahala Company is protected by these Terms of Service and applicable laws and regulations.</p>
+                    <p>We cooperate with law enforcement authorities to protect our users and the public.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>11. Warranty Disclaimer</h2>
+                <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE". Mahala Company makes no warranties or representations about the quality, accuracy, or reliability of the Service.</p>
+                <p>We do not guarantee that the Service will be uninterrupted or error-free.</p>
+                <p>To the fullest extent permitted by law, we disclaim all warranties, whether express or implied.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>12. Limitation of Liability</h2>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, MAHALA COMPANY SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY DAMAGES OR PUNITIVE DAMAGES.</p>
+                <p>IN NO EVENT SHALL MAHALA COMPANY BE LIABLE FOR ANY DAMAGES ARISING FROM YOUR USE OF THE SERVICE.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>13. Indemnification</h2>
+                <p>MAHALA COMPANY SHALL NOT BE LIABLE FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY DAMAGES.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>14. Governing Law</h2>
+                <p>These Terms shall be governed by and construed in accordance with the laws of India, without regard to conflict of law principles.</p>
+                <p>If any provision of these Terms is found to be invalid or unenforceable by applicable law, that provision shall be severed from the Terms without affecting the remaining provisions.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>15. Severability</h2>
+                <p>If any provision of these Terms is found to be invalid or unenforceable by applicable law, that provision shall be severed from the Terms without affecting the remaining provisions.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>16. Entire Agreement</h2>
+                <p>These Terms constitute the entire agreement between you and Mahala Company regarding your use of the Service.</p>
+                <p>No other agreements or representations, whether oral or written, shall modify these Terms.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>17. No Waiver</h2>
+                <p>No delay or failure by Mahala Company in enforcing any of its rights under these Terms shall be considered a waiver of those rights.</p>
+            </div>
+            </div>
+            
+            <div class="last-updated">
+                <p>Last updated: January 1, 2025</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        // Check if user is logged in
+        function checkUserLogin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (currentUser) {
+                // User is logged in, show user profile
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                
+                // Update user profile information
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                
+                // Set user avatar with first letter of name
+                const firstLetter = currentUser.name.charAt(0).toUpperCase();
+                document.getElementById('userAvatar').textContent = firstLetter;
+                
+                return true; // User is logged in
+            } else {
+                // User is not logged in, show login/signup buttons
+                document.getElementById('authButtons').style.display = 'flex';
+                document.getElementById('userProfile').style.display = 'none';
+                
+                return false; // User is not logged in
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('currentUser');
+            showNotification('You have been logged out successfully', 'success');
+            checkUserLogin();
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Initialize
+        checkUserLogin();
+    </script>
+</body>
+</html>
